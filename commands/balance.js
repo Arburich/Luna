@@ -37,7 +37,7 @@ function picture(j){
     return "https://i.imgur.com/OJ0cRlV.gif";
   }
   else if((j >= 1) && (j <= 10)){
-    return "https://i.imgur.com/hTBH5jD.png";
+    return "https://i.imgur.com/rUJglmY.gif";
   }
   else if ((j >= 11) && (j <= 29)){
     return "https://i.imgur.com/sUMocW5.png";
