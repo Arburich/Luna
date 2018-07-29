@@ -12,7 +12,7 @@ let argu = ""
     message.channel.send("Incorrect Syntax. Use ``!helpme dist`` for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
     return;
   }
-  const msg = await message.channel.send("Loading Arguments.");
+  const msg = await message.channel.send("Loading The Galaxy..");
   function httpGet(theUrl)
 {
     var xmlHttp = new XMLHttpRequest();
@@ -26,19 +26,17 @@ let argu = ""
     if(httpGet(uri).length <= 2 && systems[0] == system){
       msg.edit("No information on EDSM for ``" + systems[0] + "``");
     }
-    msg.edit("Finding Stars in Space..");
+    msg.edit("Finding Stars in Space...");
     if(httpGet(uri).length <= 2 && systems[1] == system){
       msg.edit("No information for ``" + systems[1] + "``");
     }
-    msg.edit("Finding Stars in Space...");
     return JSON.parse(httpGet(uri));
   }
-  
-  msg.edit("Getting System 1 Coords....");
+   msg.edit("Doing A lot of Math....");
+
   var sys1 = download(systems[0]);
-  msg.edit("Getting System 2 Coords.....");
   var sys2 = download(systems[1]);
-  msg.edit("Doing A lot of Math......");
+ 
   var distance = Math.sqrt(Math.pow((sys2["coords"]["x"] - sys1["coords"]["x"]), 2)
                           + Math.pow((sys2["coords"]["y"] - sys1["coords"]["y"]), 2)
                           + Math.pow((sys2["coords"]["z"] - sys1["coords"]["z"]), 2)).toFixed(2);

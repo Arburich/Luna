@@ -14,6 +14,15 @@ exports.run = async (client, message, args) => {
 • 3.) Animated Emoji    :: 35 Lunabits
     > Buys you a single Animated Emoji Slot. Nitro only!
 
+• 4.) A Piece of Scrap  :: 250 Lunabits
+    > An item from the Frontier Store worth $2.50
+
+• 5.) A Chunk of Slag   :: 500 Lunabits
+    > An item from the Frontier Store worth $5.00
+
+• 6.) Some Refined Iron :: 1000 Lunabits
+    > An item on the Frontier Store worth $10.00
+
 =  Note: All items can be rejected at Moderator discretion.  =
 = If you have suggestions for more items, let Arburich know! =`, {code: "asciidoc"});
     return;
@@ -53,6 +62,42 @@ exports.run = async (client, message, args) => {
     money.updateBal(message.author.id, -35).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
                 message.channel.send(`${message.author} had 30 Lunabits removed from thier balance . \n**New Balance:** ${i.money} Lunabits`);
                 message.channel.send("Screenshot this and let an @Admin know you purchased an Animated Emoji." )
+      return;
+            })})
+        break;
+        case "4":
+        money.fetchBal(message.author.id).then((j) => {
+          if((j.money - 250) < 0){
+            message.channel.send("You need 250 Lunabits for that.");
+            return;
+    }
+    money.updateBal(message.author.id, -250).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
+                message.channel.send(`${message.author} had 250 Lunabits removed from thier balance . \n**New Balance:** ${i.money} Lunabits`);
+                message.channel.send("Screenshot this and let @Arburich know you purchased this." )
+      return;
+            })})
+        break;
+        case "5":
+        money.fetchBal(message.author.id).then((j) => {
+          if((j.money - 500) < 0){
+            message.channel.send("You need 500 Lunabits for that.");
+            return;
+    }
+    money.updateBal(message.author.id, -500).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
+                message.channel.send(`${message.author} had 500 Lunabits removed from thier balance . \n**New Balance:** ${i.money} Lunabits`);
+                message.channel.send("Screenshot this and let @Arburich know you purchased this." )
+      return;
+            })})
+        break;
+        case "6":
+        money.fetchBal(message.author.id).then((j) => {
+          if((j.money - 1000) < 0){
+            message.channel.send("You need 1000 Lunabits for that.");
+            return;
+    }
+    money.updateBal(message.author.id, -1000).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
+                message.channel.send(`${message.author} had 1000 Lunabits removed from thier balance . \n**New Balance:** ${i.money} Lunabits`);
+                message.channel.send("Screenshot this and let @Arburich know you purchased this." )
       return;
             })})
         break;

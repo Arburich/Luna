@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
   let memberID = message.mentions.members.first().id;
   let member = message.mentions.members.first();
   money.fetchBal(memberID).then((j) => {
-    if((j.money - args[1]) < 0){
+    if((j.money - args[1]) < 0 || args[1] < 0){
       message.channel.send("There aren't enough Lunabits to do that. Make sure you are removing the correct amount!");
       return;
     }
