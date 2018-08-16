@@ -2,6 +2,8 @@
 // Node version, if it isn't it will throw the following error to inform
 // you.
 if (process.version.slice(1).split(".")[0] < 8) throw new Error("Node 8.0.0 or higher is required. Update Node on your system.");
+asdfasdfasdf
+
 
 
 // Load up the discord.js library
@@ -84,6 +86,10 @@ const init = async () => {
   }
 const express = require('express');
 const app = express();
+app.get("/", (request, response) => {
+  console.log(Date.now() + " Ping Received");
+  response.sendStatus(200);
+});
 app.listen(process.env.PORT);
 setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
