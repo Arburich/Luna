@@ -1,29 +1,29 @@
 exports.run = async (client, message, args, level) => {
   const embed = {
-  "title": "Home: G 139-50, Filipchenko City",
+  "title": "Home: 59 Virginis, Hilmers Gateway",
   "color": 4751592,
-  "thumbnail": {
-    "url": "https://i.imgur.com/JyoC6Kt.jpg"
+  "image": {
+    "url": "https://media.discordapp.net/attachments/334801941362245634/479388070483984394/20180715233604_1.png?width=1192&height=671"
   },
   "author": {
-    "name": "== We Got This Corp =="
+    "name": "== Alchemy Den =="
   },
   "fields": [
     {
       "name": "EDDB Links:",
-      "value": "System: https://eddb.io/system/4920\nStation: https://eddb.io/station/203"
+      "value": "System: https://eddb.io/system/268\nStation: https://eddb.io/station/1521"
     },
     {
       "name": "Nearest Material Traders:",
-      "value": "**Encoded**: *G 139-50*, Filipchenko City, 6 Ls, here\n**Manufactured**: *V2213 Ophiuchii*, De Andrade Dock, 2693 Ls, 12.61 Ly\n**Manufactured**: *Ross 720*, Raleigh Orbital, 6 Ls, 31.47 Ly\n**Raw**: *G 139-3*, O'Connor Dock, 6 Ls, 27.77 Ly"
+      "value": "**Enecoded**: *LFT 1103*, Kirk Ring, 6 Ls, 18.52 Ly\n**Manufactured**: *LP 620-3*, Jensen Enterprise,  14 Ls, 18.21 Ly\n**Raw**: *MCC 686*, Smith City, 15 Ls, 26.92 Ly"
     },
     {
       "name": "Nearest Tech Brokers: ",
-      "value": "**Guardian**: Cochrane Enterprise, Cantjarisni,6 Ls, 36.87 Ly\n**Guardian**: Lie Ring, LP 685-43, 2381 Ls, 25.99 Ly\n**Human**: Thomson Port, LTT 15461, 40 Ls, 28.49 Ly"
+      "value": "**Guardian**: *GQ Virginis*, Ray Enterprise, 433 Ls, 27.99 Ly\n**Human**: *Xevioso*,  Ciferri Gateway, 30 Ls, 14.73 Ly"
     },
     {
       "name": "Nearest Interstellar Factors: ",
-      "value": "Hopkins Penal colony, G 140-9, 1297 Ls, 4.32 Ly\nSeddon Dock, LHS 448, 35 Ls, 8.91 Ly"
+      "value": "*Wolf 497*, Buffett Vista,  56 Ls, 16.94 Ly"
     }
   ]
 };

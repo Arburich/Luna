@@ -55,7 +55,7 @@ exports.help = {
   name: "dist",
   category: "Custom Commands",
   description: "Gives the Distance between two systems in the EDSM database.",
-  usage: "dist <system1> <system2>"
+  usage: "dist <system1>, <system2>"
 };
 
 
