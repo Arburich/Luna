@@ -2,7 +2,6 @@
 // Node version, if it isn't it will throw the following error to inform
 // you.
 if (process.version.slice(1).split(".")[0] < 8) throw new Error("Node 8.0.0 or higher is required. Update Node on your system.");
-asdfasdfasdf
 
 
 
