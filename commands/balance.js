@@ -1,11 +1,11 @@
-const money = require('discord-money');
+const money = require('./discord-muns.js');
 exports.run = async (client, message, args, level) => {
   if(!args[0]){
   money.fetchBal(message.author.id).then((i) => { // money.fetchBal grabs the userID, finds it, and puts it into 'i'.
   const embed = {
         "color": 15866827,
         "title": "__**Balance**__",
-        "description":"\n**" + i.money + "** Lunabits Available",
+        "description":"\n**" + i.money + "** Lunabits Available\n**" + i.totalbits + "** Lifetime Collected",
         "thumbnail" : {
           url: picture(i.money)
         }
@@ -21,7 +21,7 @@ exports.run = async (client, message, args, level) => {
   const embed = {
         "color": 15866827,
         "title": "__**Balance of User Mentioned**__",
-        "description":"\n**" + i.money + "** Lunabits Available",
+        "description":"\n**" + i.money + "** Lunabits Available\n**" + i.totalbits + "** Lifetime Collected",
         "thumbnail" : {
           url: picture(i.money)
         }

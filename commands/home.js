@@ -15,7 +15,7 @@ exports.run = async (client, message, args, level) => {
     },
     {
       "name": "Nearest Material Traders:",
-      "value": "**Enecoded**: *LFT 1103*, Kirk Ring, 6 Ls, 18.52 Ly\n**Manufactured**: *LP 620-3*, Jensen Enterprise,  14 Ls, 18.21 Ly\n**Raw**: *MCC 686*, Smith City, 15 Ls, 26.92 Ly"
+      "value": "**Encoded**: *LFT 1103*, Kirk Ring, 6 Ls, 18.52 Ly\n**Manufactured**: *LP 620-3*, Jensen Enterprise,  14 Ls, 18.21 Ly\n**Raw**: *MCC 686*, Smith City, 15 Ls, 26.92 Ly"
     },
     {
       "name": "Nearest Tech Brokers: ",
