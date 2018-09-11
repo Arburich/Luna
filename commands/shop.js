@@ -5,13 +5,14 @@ exports.run = async (client, message, args) => {
   }
   if(args[0] === "list"){
     message.channel.send(`= Shop Items! (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ =
-• 1.) Server Emoji Slot :: 30 Lunabits 
+
+• 1.) Server Emoji Slot :: 50 Lunabits 
     > The buyer can buy an emoji slot. Needs to fit 500x500px. 
 
 • 2.) Custom Command    :: 30 Lunabits
     > Buys one !{command} that can use a basic chat reply. You can add links, picture links, or \"something fancy\".
 
-• 3.) Animated Emoji    :: 35 Lunabits
+• 3.) Animated Emoji    :: 50 Lunabits
     > Buys you a single Animated Emoji Slot. Nitro only!
 
 • 4.) A Piece of Scrap  :: 250 Lunabits
@@ -31,8 +32,8 @@ exports.run = async (client, message, args) => {
     switch (args[1]){
       case "1":
         money.fetchBal(message.author.id).then((j) => {
-          if((j.money - 30) < 0){
-            message.channel.send("You need 30 Lunabits for that.");
+          if((j.money - 50) < 0){
+            message.channel.send("You need 50 Lunabits for that.");
             return;
     }
     money.updateBal(message.author.id, -30).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
@@ -44,7 +45,7 @@ exports.run = async (client, message, args) => {
         case "2":
         money.fetchBal(message.author.id).then((j) => {
           if((j.money - 30) < 0){
-            message.channel.send("You need 30 Lunabits for that.");
+            message.channel.send("You need 50 Lunabits for that.");
             return;
     }
     money.updateBal(message.author.id, -30).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
@@ -55,8 +56,8 @@ exports.run = async (client, message, args) => {
         break;
         case "3":
         money.fetchBal(message.author.id).then((j) => {
-          if((j.money - 35) < 0){
-            message.channel.send("You need 35 Lunabits for that.");
+          if((j.money - 50) < 0){
+            message.channel.send("You need 50 Lunabits for that.");
             return;
     }
     money.updateBal(message.author.id, -35).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
