@@ -3,7 +3,7 @@ exports.run = async (client, message, args, level) => {
   "title": "Home: 59 Virginis, Hilmers Gateway",
   "color": 4751592,
   "image": {
-    "url": "https://media.discordapp.net/attachments/334801941362245634/479388070483984394/20180715233604_1.png?width=1192&height=671"
+    "url": "https://i.imgur.com/84S1E4w.jpg"
   },
   "author": {
     "name": "== Alchemy Den =="

@@ -1,4 +1,4 @@
-const money = require('discord-money');
+const money = require('./discord-muns.js');
 exports.run = async (client, message, args) => {
   if(!args){
     message.channel.send("Incorrect syntax. Use !helpme shop for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
@@ -36,8 +36,8 @@ exports.run = async (client, message, args) => {
             message.channel.send("You need 50 Lunabits for that.");
             return;
     }
-    money.updateBal(message.author.id, -30).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
-                message.channel.send(`${message.author} had 30 Lunabits removed from thier balance . \n**New Balance:** ${i.money} Lunabits`);
+    money.updateBal(message.author.id, -50).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
+                message.channel.send(`${message.author} had 50 Lunabits removed from thier balance . \n**New Balance:** ${i.money} Lunabits`);
                 message.channel.send("Screenshot this and let an @Admin know you purchased an emoji." )
       return;
             })})
@@ -60,8 +60,8 @@ exports.run = async (client, message, args) => {
             message.channel.send("You need 50 Lunabits for that.");
             return;
     }
-    money.updateBal(message.author.id, -35).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
-                message.channel.send(`${message.author} had 30 Lunabits removed from thier balance . \n**New Balance:** ${i.money} Lunabits`);
+    money.updateBal(message.author.id, -50).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
+                message.channel.send(`${message.author} had 50 Lunabits removed from thier balance . \n**New Balance:** ${i.money} Lunabits`);
                 message.channel.send("Screenshot this and let an @Admin know you purchased an Animated Emoji." )
       return;
             })})
