@@ -1,4 +1,5 @@
 exports.run = async (client, message, args, level) => {
+  message.delete(1000)
   const embed = {
         "color": 15866827,
         "footer": {

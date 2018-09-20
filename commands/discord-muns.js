@@ -194,4 +194,69 @@
             });
             return getInfo;
         },
+      setBal: function(userID, increase) {
+            const getInfo = new Promise((resolve,error) => {
+                // Turns increase into a number automatically
+                increase = parseInt(increase);
+                // Check if increase is a number
+                if (isNaN(increase)) {
+                    console.log('INCREASE VALUE is NOT A NUMBER');
+                    return error('ERROR: INCREASE VALUE is NOT A NUMBER');
+                }
+                // Variables
+                var db;
+                var response;
+                var log = false;
+                function createDb() { // Root
+                    if (log) console.log('Creating Database Chain to store the userID money');
+                    db = new sqlite3.Database('./userMoneyNew.sqlite', createTable);
+                }
+                function createTable() { // Extends createDb
+                    db.run("CREATE TABLE IF NOT EXISTS moneyset (userID TEXT, money INTEGER, lastDaily TEXT, totalbits INTEGER)", checkIfCreated);
+                }
+                function checkIfCreated() {
+                    if (log) console.log('Creating Table');
+                    db.get(`SELECT * FROM moneyset WHERE userID = '${userID}'`, function(err, row) {
+                        if (!row) {
+                            insertRows();
+                        }
+                        else {
+                            db.run(`UPDATE moneyset SET money = '${increase}' WHERE userID = '${userID}'`)
+                            db.get(`SELECT * FROM moneyset WHERE userID = '${userID}'`, function(err, row) {
+                                response = row;
+                                returnDb();
+                            });
+                        }
+                    })
+                }
+                function insertRows() { // Extends createTable
+                    var stmt = db.prepare("INSERT INTO moneyset (userID,money,lastDaily,totalbits) VALUES (?,?,?,?)");
+                    stmt.run(userID, 0, 'Not Collected')
+                    stmt.finalize(readAllRows);
+                }
+                function readAllRows() { // Extends insertRows
+                    /**db.all("SELECT rowid AS id, userID, money, lastDaily FROM moneyset", function(err, rows) { // This shows ALL rows
+                        rows.forEach(function(row) {
+                            console.log(row);
+                        });
+                        closeDb();
+                    });**/
+                    db.get(`SELECT * FROM moneyset WHERE userID = '${userID}'`, function(err, row) {
+                        closeDb()
+                    })
+                }
+                function closeDb() { // Extends readAllRows
+                    checkIfCreated()
+                    db.close();
+                }
+                function returnDb() {
+                    return resolve(response)
+                }
+                function runChain() {
+                    createDb();
+                }
+                runChain();
+            });
+            return getInfo;
+        },
     }

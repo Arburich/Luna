@@ -28,7 +28,6 @@ client.config = require("./config.js");
 
 // Require our logger
 client.logger = require("./util/Logger");
-
 // Let's start by getting some useful functions that we'll use throughout
 // the bot, like logs and elevation features.
 require("./modules/functions.js")(client);
