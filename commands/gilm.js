@@ -8,6 +8,10 @@ exports.run = async (client, message, args, level) => {
         else if(args[i] === " ") argu += args[i];
         else argu += args[i] + " ";
     }
+    var n =argu.includes("everyone");
+    if (n == true){
+      return;
+    }
   var split = argu.split(" ");
   var final = ""
   for(var i = 0; i < split.length;i++){

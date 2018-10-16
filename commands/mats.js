@@ -947,7 +947,7 @@ exports.run = async (client, message, args, level) => {
       }
     }
     if (failed == false){
-      message.channel.send("Couldn't find " + argu + ". Use ``!mats list <raw|data|manufactured>`` for a list of materials.")
+      message.channel.send("Couldn't find ``" + argu + "``. Use ``!mats list <raw|data|manufactured>`` for a list of materials.")
     }
   }
   function gradePic(grade){
