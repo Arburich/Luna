@@ -2,7 +2,6 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var moment = require("moment");
 const Discord = require("discord.js");
 exports.run = async (client, message, args, level) => {
-  message.delete(1000)
   if(!args[0]){
   message.channel.send("Incorrect syntax, use ``!helpme systemstatus`` for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
     return;
