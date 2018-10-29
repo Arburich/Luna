@@ -1,9 +1,8 @@
 exports.run = async (client, message, args, level) => {
-  message.delete(1000)
   const embed = {
         "color": 15866827,
         "footer": {
-            "icon_url": "https://cdn.discordapp.com/avatars/223604997206573056/893ac53fc4af588e511760123085d516.png?",
+            "icon_url": "https://cdn.discordapp.com/avatars/223604997206573056/6941c2098d5b6498259d96a6de041424.png?size=2048",
             "text": "Made by Arburich"
         },
         "image": {

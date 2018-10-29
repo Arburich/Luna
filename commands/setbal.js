@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: [],
+  aliases: ["setbalance"],
   permLevel: "Moderator"
 };
 
