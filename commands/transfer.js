@@ -11,14 +11,19 @@ exports.run = async (client, message, args) => {
       message.channel.send("There aren't enough Lunabits to do that.");
       return;
     }
-  
+    var actualTot = 0;
     money.updateBal(message.author.id, -(args[1])).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
                 message.channel.send(`${message.author} had ${args[1]} Lunabits removed from thier balance . \n**New Balance:** ${i.money} Lunabits`);
       money.updateBal(memberID, args[1]).then((k) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
                 message.channel.send(`${member} got ${args[1]} Lunabits.\n**New Balance:** ${k.money} Lunabits`);
-      return;
+                actualTot = k.totalbits - args[1];
+       money.setTotal(memberID, actualTot).then((l) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it in
+})      
+            
             })
-            })})
+            return;
+            })
+            })
 };
 
 exports.conf = {
