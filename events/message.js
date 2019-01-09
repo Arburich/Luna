@@ -6,7 +6,8 @@ module.exports = (client, message) => {
   // It's good practice to ignore other bots. This also makes your bot ignore itself
   // and not get into a spam loop (we call that "botception").
   if (message.author.bot) return;
-
+  if (message.content.toLowerCase().includes("thanks luna"))
+		message.channel.send("You're Welcome! :heart:");
   // Grab the settings for this server from Enmap.
   // If there is no guild, get default conf (DMs)
   const settings = message.settings = client.getGuildSettings(message.guild);

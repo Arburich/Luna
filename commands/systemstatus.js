@@ -22,15 +22,14 @@ let argu = ""
 }
   function download(system){
     let systemLink = system.replace('+','%2B').replace(' ', '+');
-    let uri = `https://elitebgs.kodeblox.com/api/ebgs/v4/systems?name=${systemLink}`;
+    let uri = `https://elitebgs.app/api/ebgs/v4/systems?name=${systemLink}`;
     return JSON.parse(httpGet(uri));
     }
   function BGS(faction){
     let systemLink = faction.replace('+','%2B').replace(' ', '+');
-    let uri = `https://elitebgs.kodeblox.com/api/ebgs/v4/factions?name=${systemLink}`;
+    let uri = `https://elitebgs.app/api/ebgs/v4/factions?name=${systemLink}`;
     return JSON.parse(httpGet(uri));
     }
-  
   var factions = [];
   var system = download(argu);
   
