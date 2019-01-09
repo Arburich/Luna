@@ -107,9 +107,20 @@ if (index !== factionPendingStates.length - 1) {
   function go(){
     message.channel.send(factionDetail, {code: "asciidoc"});
   }
-  message.channel.sendFile(testchart).then(function() {
-    setTimeout(go, 1000);
-});
+  var timeMax = Date.now();
+  var timeMin = timeMax - (15 * 24 * 60 * 60 * 1000)
+  var systemName = systemName.replace('+','%2B').replace(' ', '+');
+  const embed = {
+        "color": 15866827,
+        "image": {
+            "url": `https://elitebgs.app/chartgenerator/systems/influence?name=${systemName}&timemin=${timeMin}&timemax=${timeMax}&theme=dark`
+        }
+    };
+    message.channel.send({ embed });
+
+setTimeout(go, 1000);
+message.channel.send();
+
 }
 
 

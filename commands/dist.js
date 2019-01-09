@@ -21,19 +21,20 @@ let argu = ""
     return xmlHttp.responseText;
 }
   function download(system){
+	msg.edit("Finding Stars in Space...");
     let systemLink = system.replace('+','%2B').replace(' ', '+');
     let uri = `https://www.edsm.net/api-v1/system?sysname=${systemLink}&coords=1`;
     if(httpGet(uri).length <= 2 && systems[0] == system){
       msg.edit("No information on EDSM for ``" + systems[0] + "``");
     }
-    msg.edit("Finding Stars in Space...");
+    
     if(httpGet(uri).length <= 2 && systems[1] == system){
       msg.edit("No information for ``" + systems[1] + "``");
     }
     return JSON.parse(httpGet(uri));
   }
    msg.edit("Doing A lot of Math....");
-
+  
   var sys1 = download(systems[0]);
   var sys2 = download(systems[1]);
  
