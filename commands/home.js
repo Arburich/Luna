@@ -3,7 +3,7 @@ exports.run = async (client, message, args, level) => {
   "title": "Home: 59 Virginis, Hilmers Gateway",
   "color": 4751592,
   "image": {
-    "url": "https://i.imgur.com/84S1E4w.jpg"
+    "url": "https://i.imgur.com/YPWtsgw.png"
   },
   "author": {
     "name": "== Alchemy Den =="
@@ -15,7 +15,7 @@ exports.run = async (client, message, args, level) => {
     },
     {
       "name": "Nearest Material Traders:",
-      "value": "**Encoded**: *LFT 1103*, Kirk Ring, 6 Ls, 18.52 Ly\n**Manufactured**: *LP 620-3*, Jensen Enterprise,  14 Ls, 18.21 Ly\n**Raw**: *MCC 686*, Smith City, 15 Ls, 26.92 Ly"
+      "value": "**Encoded**: *LFT 1103*, Kirk Ring, 6 Ls, 18.52 Ly\n**Manufactured**: *LP 620-3*, Jensen Enterprise,  14 Ls, 18.21 Ly\n**Raw**: *Chaac*, Lem Dock, 560 Ls, 28.39 Ly"
     },
     {
       "name": "Nearest Tech Brokers: ",

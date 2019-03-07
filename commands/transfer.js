@@ -3,6 +3,10 @@ exports.run = async (client, message, args) => {
   if(!args || args.length < 1 || !args[1]){
     message.channel.send("Incorrect syntax. Use ``!helpme transfer`` for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
   }
+    if (args[1] < 0){
+    message.channel.send("Can't give someone a negative amount.");
+    return;
+  }
 
   let memberID = message.mentions.members.first().id;
   let member = message.mentions.members.first();
