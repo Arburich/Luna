@@ -1,3 +1,5 @@
+config.js
+
 # Logs
 logs
 *.log
@@ -60,3 +62,5 @@ typings/
 # dotenv environment variables file
 .env
 
+# IDE paths
+nbproject/
