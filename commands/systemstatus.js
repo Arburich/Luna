@@ -21,12 +21,12 @@ let argu = ""
     return xmlHttp.responseText;
 }
   function download(system){
-    let systemLink = system.replace('+','%2B').replace(' ', '+');
+    let systemLink = system.replace('+','%2B').replace('&','%26').replace(' ', '+');
     let uri = `https://elitebgs.app/api/ebgs/v4/systems?name=${systemLink}`;
     return JSON.parse(httpGet(uri));
     }
   function BGS(faction){
-    let systemLink = faction.replace('+','%2B').replace(' ', '+');
+    let systemLink = faction.replace('+','%2B').replace('&','%26').replace(' ', '+');
     let uri = `https://elitebgs.app/api/ebgs/v4/factions?name=${systemLink}`;
     return JSON.parse(httpGet(uri));
     }

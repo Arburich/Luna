@@ -34,19 +34,10 @@ exports.run = async (client, message, args, level) => {
 function picture(j){
 
   if(j == 0){
-    return "https://i.imgur.com/OJ0cRlV.gif";
-  }
-  else if((j >= 1) && (j <= 10)){
-    return "https://i.imgur.com/rUJglmY.gif";
-  }
-  else if ((j >= 11) && (j <= 29)){
-    return "https://i.imgur.com/sUMocW5.png";
-  }
-  else if ((j >= 30) && (j <= 50)){
-    return "https://i.imgur.com/0kB211q.png";
+    return "https://i.imgur.com/67zRfy7.gif";
   }
   else{
-    return "https://i.imgur.com/go7WMAH.png";
+    return "https://i.imgur.com/67zRfy7.gif";
   }
 }
 

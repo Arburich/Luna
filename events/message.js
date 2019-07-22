@@ -7,13 +7,25 @@ module.exports = (client, message) => {
   // and not get into a spam loop (we call that "botception").
   if (message.author.bot) return;
   if (message.content.toLowerCase().includes("thanks luna"))
-		message.channel.send("You're Welcome! :heart:");
+		message.channel.send("You're Welcome! :heart:"); //You're Welcome! :heart:
   if (message.content.toLowerCase().includes("sorry luna"))
-		message.channel.send("It's ok fren :purple_heart:");
-	
+		message.channel.send("It's ok fren :purple_heart:");	//It's ok fren :purple_heart:
+	if (message.content.toLowerCase().includes("happy birthday luna"))
+		message.channel.send("Thanks fren! :cake: :purple_heart:");
+	if (message.content.toLowerCase().includes("love you luna"))
+		message.channel.send("I love you too fren"); //It's ok fren :purple_heart:
   if (message.channel.id == "466276572836397056"){
     if(message.attachments.size > 0){
       message.react(`💙`)}}
+	  
+  //if(message.attachments.size > 0){
+      //Attachment = (message.attachments).array();
+      //Attachment.forEach(function(attachment) {
+          //message.channel.send(message.member.displayName + ": " + attachment.url);
+//})}else{message.channel.send(message.member.displayName + ": ``" + message.content + "``")}
+  //message.delete(1000)
+	  
+	  
   // Grab the settings for this server from Enmap.
   // If there is no guild, get default conf (DMs)
   const settings = message.settings = client.getGuildSettings(message.guild);

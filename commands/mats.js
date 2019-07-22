@@ -261,7 +261,7 @@ exports.run = async (client, message, args, level) => {
     "Grade": "Standard",
     "Link": "https://inara.cz/galaxy-component/35/",
     "Type": "Manufactured",
-    "Ship+salvage+(Combat+ships),+USS": {}
+    "Where": "Ship+salvage+(Combat+ships),+USS"
   },
   "Galvanising+Alloys": {
     "Grade": "Common",

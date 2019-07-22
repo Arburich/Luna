@@ -25,7 +25,20 @@ exports.run = async(client, message, args, level) => {
   }else{
   var randomColor = "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); });
   const member = message.mentions.members.first();
-  const embed = new Discord.RichEmbed()
+  if (member.user.avatarURL == null){
+	const embed = new Discord.RichEmbed()
+    .setColor(randomColor)
+	.setThumbnail("https://discordapp.com/assets/dd4dbc0016779df1378e7812eabaa04d.png")
+    .setAuthor(`${member.user.tag} (${member.id})`)
+    .addField("Nickname:", `${member.nickname !== null ? `Nickname: ${member.nickname}` : "No nickname"}`, true)
+    .addField("Status", `${status[member.user.presence.status]}`, true)
+    .addField("Playing", `${member.user.presence.game ? `${member.user.presence.game.name}` : "not playing anything."}`, true)
+    .addField("Roles", `${member.roles.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).join(" **|** ") || "No Roles"}`, true)
+    .addField("Joined", `${moment().diff(moment.utc(member.joinedAt), 'days')} Days Ago (Created ${moment.utc(member.user.createdAt).format("MMMM Do YYYY")})`, true)
+	 message.channel.send({embed});
+  }
+  
+  else{const embed = new Discord.RichEmbed()
     .setColor(randomColor)
     .setThumbnail(`${member.user.avatarURL}`)
     .setAuthor(`${member.user.tag} (${member.id})`, `${member.user.avatarURL}`)
@@ -34,8 +47,9 @@ exports.run = async(client, message, args, level) => {
     .addField("Playing", `${member.user.presence.game ? `${member.user.presence.game.name}` : "not playing anything."}`, true)
     .addField("Roles", `${member.roles.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).join(" **|** ") || "No Roles"}`, true)
     .addField("Joined", `${moment().diff(moment.utc(member.joinedAt), 'days')} Days Ago (Created ${moment.utc(member.user.createdAt).format("MMMM Do YYYY")})`, true)
-
-  message.channel.send({embed});
+	 message.channel.send({embed});
+  }
+ 
   }
 };
 
