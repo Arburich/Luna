@@ -3,11 +3,11 @@ exports.run = async (client, message, args, level) => {
 let argu = ""
     for(var i = 0; i < args.length; i++){
         if(i == args.length-1) argu += args[i];
-        else if(args[i] === ", ") argu += args[i];
+        else if(args[i] === ",") argu += args[i];
         else argu += args[i] + " ";
     }
 
-    let systems = argu.split(", ")
+    let systems = argu.split(",")
   if(!systems[0] || !systems[1]){
     message.channel.send("Incorrect Syntax. Use ``!helpme dist`` for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
     return;
@@ -22,8 +22,9 @@ let argu = ""
 }
 msg.edit("Finding Stars in Space...");
   function download(system){
-    let systemLink = system.replace('+','%2B').replace(' ', '+');
+    let systemLink = system.trim().replace('+','%2B').replace(/ /g, '+');
     let uri = `https://www.edsm.net/api-v1/system?sysname=${systemLink}&coords=1`;
+    
     if(httpGet(uri).length <= 2 && systems[0] == system){
       msg.edit("No information on EDSM for ``" + systems[0] + "``");
     }

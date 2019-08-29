@@ -1,7 +1,7 @@
 {
-  "name": "guidebot",
+  "name": "Luna",
   "version": "2.3.5",
-  "description": "A boilerplate example bot with command handler and reloadable commands. Updated and Maintained by the Idiot's Guide Community",
+  "description": "Alchemy Den's Own Bot!",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,34 +12,34 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/An-Idiots-Guide/guidebot.git"
+    "url": "https://github.com/Arburich/Luna"
   },
-  "author": "Evelyne Lachance <eslachance@gmail.com> (http://evie.codes)",
+  "author": "Arburich#1458",
   "contributors": [
-    "York (http://anidiots.guide)"
+    ""
   ],
-  "license": "MIT",
+  "license": "",
   "bugs": {
-    "url": "https://github.com/An-Idiots-Guide/guidebot/issues"
+    "url": "https://github.com/Arburich/Luna/issues"
   },
-  "homepage": "https://github.com/An-Idiots-Guide/guidebot#readme",
+  "homepage": "https://github.com/Arburich/Luna",
   "dependencies": {
-    "all": "0.0.0",
-    "chalk": "^2.4.2",
+    "chalk": "^2.4.1",
     "discord-money": "^0.2.0",
-    "discord.js": "^11.5.1",
+    "discord.js": "^11.4.2",
     "enmap": "^2.7.2",
     "enmap-level": "^2.1.0",
-    "express": "^4.17.1",
+    "express": "^4.16.4",
     "forever": "^0.15.3",
-    "jquery": "^3.4.1",
+    "jquery": "^3.3.1",
     "jsdom": "^11.12.0",
-    "moment": "^2.24.0",
-    "moment-duration-format": "^2.3.2",
-    "package.json": "^2.0.1",
-    "pm2": "^3.5.1",
+    "moment": "^2.22.2",
+    "moment-duration-format": "^2.2.2",
+    "net": "1.0.2",
+    "ping": "^0.2.2",
+    "pm2": "^3.2.2",
     "request": "^2.88.0",
-    "sqlite3": "^4.0.9",
+    "sqlite3": "^4.0.4",
     "xmlhttprequest": "^1.8.0"
   }
 }
