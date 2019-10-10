@@ -1,7 +1,7 @@
 const money = require('./discord-muns.js');
 exports.run = async (client, message, args) => {
   if(!args || args.length < 1 || !args[1]){
-    message.channel.send("Incorrect syntax. Use ``!helpme settotal`` for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
+    message.channel.send("Incorrect syntax. Use ``!helpme setbal`` for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
   }
 
   let memberID = message.mentions.members.first().id;

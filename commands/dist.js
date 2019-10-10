@@ -49,7 +49,7 @@ msg.edit("Finding Stars in Space...");
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: [],
+  aliases: ["distance"],
   permLevel: "User"
 };
 

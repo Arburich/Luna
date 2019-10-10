@@ -9,20 +9,11 @@ exports.run = async (client, message, args) => {
 • 1.) Server Emoji Slot :: 50 Lunabits 
     > The buyer can buy an emoji slot. Needs to fit 500x500px. 
 
-• 2.) Custom Command    :: 30 Lunabits
+• 2.) Custom Command    :: 50 Lunabits
     > Buys one !{command} that can use a basic chat reply. You can add links, picture links, or \"something fancy\".
 
 • 3.) Animated Emoji    :: 50 Lunabits
     > Buys you a single Animated Emoji Slot. Nitro only!
-
-• 4.) A Piece of Scrap  :: 250 Lunabits
-    > An item from the Frontier Store worth $2.50
-
-• 5.) A Chunk of Slag   :: 500 Lunabits
-    > An item from the Frontier Store worth $5.00
-
-• 6.) Some Refined Iron :: 1000 Lunabits
-    > An item on the Frontier Store worth $10.00
 
 =  Note: All items can be rejected at Moderator discretion.  =
 = If you have suggestions for more items, let Arburich know! =`, {code: "asciidoc"});
