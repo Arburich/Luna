@@ -15,7 +15,6 @@ exports.run = async (client, message, args, level) => {
 + "\nCoordinates :: 43.812, -173.972"
 + "\nhttps://canonn.science/codex/orrere-crashed-ship/"
 + "\n\n== Data =="
-+ "\nAny system in a state of \"Famine\", find a Distribution Center and bring a wake scanner. or"
 + "\n\n-Jameson Crash Site- (260.40 ly from home)"
 + "\nSystem :: HIP 12099"
 + "\nPlanet :: 1 B Coordinates :: -54.3, -50.4";
