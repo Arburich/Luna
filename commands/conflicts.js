@@ -32,7 +32,6 @@ exports.run = async (client, message, args, level) => {
   for(var i = 0; i < faction.docs[0].faction_presence.length;i++){
     if(faction.docs[0].faction_presence[i].conflicts.length > 0){
       output += `== ${faction.docs[0].faction_presence[i].system_name} ==\n`
-      output += ` * conflict status * \n`
       //var states = ""
       for(var j = 0; j < faction.docs[0].faction_presence[i].conflicts.length;j++){
         output += `type     :: ${faction.docs[0].faction_presence[i].conflicts[j].type}\n`
@@ -40,16 +39,29 @@ exports.run = async (client, message, args, level) => {
         output += `enemy    :: ${faction.docs[0].faction_presence[i].conflicts[j].opponent_name}\n`
         output += `at stake :: ${faction.docs[0].faction_presence[i].conflicts[j].stake}\n`
         output += `days won :: ${faction.docs[0].faction_presence[i].conflicts[j].days_won}\n`
+        
+        otherfac = BGS(faction.docs[0].faction_presence[i].conflicts[j].opponent_name)
+        for(var k = 0; k < otherfac.docs[0].faction_presence.length;k++){
+          if(faction.docs[0].faction_presence[i].system_name == otherfac.docs[0].faction_presence[k].system_name){
+            for(var l = 0; l < otherfac.docs[0].faction_presence[k].conflicts.length;l++){
+        output += ` * Enemy Status *\n`
+        output += `at stake :: ${otherfac.docs[0].faction_presence[k].conflicts[l].stake}\n`
+        output += `days won :: ${otherfac.docs[0].faction_presence[k].conflicts[l].days_won}\n`
+        var updatedAt = moment(faction.docs[0].faction_presence[i].updated_at);
+        output += `== Last Updated ${updatedAt.fromNow()} ==\n`
+            }
+          }
+        }
       }
+      
     }
-    
-    if((i%4) == 0 && (i > 1)){
-      message.channel.send(output,{code :"asciidoc"})
-      output = ""
-    }
-
+      if(output){
+        message.channel.send(output,{code :"asciidoc"})
+        output = ""
+      }
+      
   }
-message.channel.send(output,{code :"asciidoc"})  
+//message.channel.send(output,{code :"asciidoc"})  
   
   
   
