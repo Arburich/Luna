@@ -13,7 +13,7 @@ module.exports = (client, message) => {
 	if (message.content.toLowerCase().includes("happy birthday luna"))
 		message.channel.send("Thanks fren! :cake: :purple_heart:");
 	if (message.content.toLowerCase().includes("love you luna"))
-		message.channel.send("I love you too fren :purple_heart"); //It's ok fren :purple_heart:
+		message.channel.send("I love you too fren :purple_heart:"); //It's ok fren :purple_heart:
   if (message.channel.id == "466276572836397056"){
     if(message.attachments.size > 0){
       message.react(`💙`)}}
