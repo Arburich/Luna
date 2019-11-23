@@ -16,7 +16,7 @@ exports.run = async (client, message, args, level) => {
             +  "\nTime: " + moment().format("h:mma UTC, MM/DD/YYYY")
             +  "\nAction: " + cmd[2]
   client.channels.get("544009403326791733").send(output)
-  //message.channel.send();
+  message.channel.send(member + " was given a warning");
 };
 
 exports.conf = {
