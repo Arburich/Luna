@@ -9,7 +9,7 @@ exports.run = async (client, message, args, level) => {
 + "\nPlanet A3"
 + "\nLayout :: https://i.imgur.com/T2kwEvLh.png?1"
 + "\n\n== Guardian Data Farm =="
-+ "\nCol 174 Sector JX-K B24-1"
++ "\nCol 173 Sector JX-K B24-0"
 + "\nPlanet B4 Ancient Ruins"
 + "\n\n== Guardian Fighter Areas =="
 + "\nGuardian Key Zone :: NGC 2451A Sector LX-U D2-25"

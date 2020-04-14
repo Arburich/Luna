@@ -77,7 +77,7 @@ exports.conf = {
 
 exports.help = {
   name: "bubble",
-  category: "Custom Commands",
+  category: "Background Simulation",
   description: "Given a list of systems, it will find the biggest distance between two points",
   usage: "bubble <system1>, <system2>, <systemx>"
 };

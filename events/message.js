@@ -17,7 +17,9 @@ module.exports = (client, message) => {
   if (message.channel.id == "466276572836397056"){
     if(message.attachments.size > 0){
       message.react(`💙`)}}
-	  
+  if (message.channel.type === "dm"){
+	client.channels.get('468620269255131138').send("Hey <@223604997206573056>, " + message.author + " sent me this in my PM's:\n" + message)
+  }
   //if(message.attachments.size > 0){
       //Attachment = (message.attachments).array();
       //Attachment.forEach(function(attachment) {

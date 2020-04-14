@@ -77,7 +77,7 @@ exports.conf = {
 
 exports.help = {
   name: "influence",
-  category: "Custom Commands",
+  category: "Background Simulation",
   description: "Gives you the total population influence of a faction",
   usage: "inf <faction>"
 };

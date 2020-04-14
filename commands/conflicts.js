@@ -77,7 +77,7 @@ exports.conf = {
 
 exports.help = {
   name: "conflicts",
-  category: "Custom Commands",
+  category: "Background Simulation",
   description: "Load Information about Conflicts related to a faction",
   usage: "conflicts <faction name>"
 };

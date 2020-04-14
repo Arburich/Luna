@@ -134,7 +134,7 @@ exports.conf = {
 
 exports.help = {
   name: "systemstatus",
-  category: "Custom Commands",
+  category: "Background Simulation",
   description: "Gives the BGS update of the Factions in a System",
   usage: "systemstatus <system>"
 };

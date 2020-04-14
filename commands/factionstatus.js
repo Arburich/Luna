@@ -113,7 +113,7 @@ exports.conf = {
 
 exports.help = {
   name: "factionstatus",
-  category: "Custom Commands",
+  category: "Background Simulation",
   description: "Status of a particular faction",
   usage: "factionstatus <faction name>"
 };
