@@ -12,6 +12,10 @@ exports.run = async (client, message, args, level) => {
     if (n == true){
       return;
     }
+if (argu.toLowerCase().includes("fuc.") == true){
+	message.channel.send("Why would you make me say that... <:lunasweat:641711032724750350>")
+	return;
+}
   var split = argu.split(" ");
   var final = ""
   for(var i = 0; i < split.length;i++){
