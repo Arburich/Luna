@@ -21,12 +21,12 @@ let argu = ""
     return xmlHttp.responseText;
 }
   function download(system){
-    let systemLink = system.replace('+','%2B').replace('&','%26').replace(/ /g, '+');
+    let systemLink = system.replace('+','%2B').replace('&','%26').replace(/ /g, '+').replace("&", "%26");
     let uri = `https://elitebgs.app/api/ebgs/v4/systems?name=${systemLink}`;
     return JSON.parse(httpGet(uri));
     }
   function BGS(faction){
-    let systemLink = faction.replace('+','%2B').replace('&','%26').replace(/ /g, '+');
+    let systemLink = faction.replace('+','%2B').replace('&','%26').replace(/ /g, '+').replace("&", "%26");
     let uri = `https://elitebgs.app/api/ebgs/v4/factions?name=${systemLink}`;
     return JSON.parse(httpGet(uri));
     }
@@ -41,8 +41,8 @@ let argu = ""
   var eddb_id = system["docs"]["0"]["eddb_id"]
   var systemName = system["docs"]["0"]["name"];
   var testchart = `http://jegin.net/testchart2.php?sysid=${eddb_id}.png`;
-  /*var testchart = `http://jegin.net/testchart2.php?sysid=${eddb_id}.png`;
-  message.channel.send(testchart);*/
+  /*var testchart = `http://jegin.net/testchart2.php?sysid=${eddb_id}.png`;*/
+  //message.channel.send(testchart);
   for(i = 0; i <= 7; i++) {
     if(system["docs"]["0"]["factions"][i] != undefined){
       factions.push(system["docs"]["0"]["factions"][i]["name_lower"]);
@@ -110,16 +110,19 @@ if (index !== factionPendingStates.length - 1) {
   var timeMax = Date.now();
   var timeMin = timeMax - (15 * 24 * 60 * 60 * 1000)
   var systemName = systemName.replace('+','%2B').replace(' ', '+');
-  const embed = {
-        "color": 15866827,
-        "image": {
-            "url": `https://elitebgs.app/chartgenerator/systems/influence?name=${systemName}&timemin=${timeMin}&timemax=${timeMax}&theme=dark`
-        }
-    };
-    message.channel.send({ embed });
+  //const embed = {
+  //      "color": 15866827,
+  //      "image": {
+  //          "url": `https://elitebgs.app/chartgenerator/systems/influence?name=${systemName}&timemin=${timeMin}&timemax=${timeMax}&theme=dark`
+  //      }
+    //};
+    //message.channel.send({ embed });
 
-setTimeout(go, 1000);
-message.channel.send();
+//setTimeout(go, 1000);
+//message.channel.send();
+  message.channel.sendFile(testchart).then(function() {
+    setTimeout(go, 1000);
+});
 
 }
 

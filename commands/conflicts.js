@@ -19,8 +19,7 @@ exports.run = async (client, message, args, level) => {
     return xmlHttp.responseText;
 }
   function BGS(faction){
-    let systemLink = faction.replace('+','%2B').replace(/ /g, '+');
-    
+    let systemLink = faction.replace('+','%2B').replace(/ /g, '+').replace("&", "%26");
     let uri = `https://elitebgs.app/api/ebgs/v4/factions?name=${systemLink}`;
     return JSON.parse(httpGet(uri));
     }

@@ -12,17 +12,18 @@ exports.run = async (client, message, args, level) => {
     if (n == true){
       return;
     }
-if (argu.toLowerCase().includes("fuc.") == true){
+  var split = argu.split(" ");
+  var out = ""
+  for(var i = 0; i < split.length;i++){
+    var len = split[i].length;
+    out += split[i].substring(0, len-1) + "k" + split[i].substring(len-1) + " ";
+  }
+  
+  if (out.toLowerCase().includes("fuck") == true){
 	message.channel.send("Why would you make me say that... <:lunasweat:641711032724750350>")
 	return;
 }
-  var split = argu.split(" ");
-  var final = ""
-  for(var i = 0; i < split.length;i++){
-    var len = split[i].length;
-    final += split[i].substring(0, len-1) + "k" + split[i].substring(len-1) + " ";
-  }
-  message.channel.send(final)
+  message.channel.send(out)
   
 };
 

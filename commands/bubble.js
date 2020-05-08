@@ -21,7 +21,8 @@ let argu = ""
 }
 var flag = false
   function download(system){
-    let systemLink = system.trim().replace('+','%2B').replace(/ /g, '+');
+    let systemLink = system.trim().replace('+','%2B').replace(/ /g, '+').replace("&", "%26");
+	let systemLink = faction.replace('+','%2B').replace(/ /g, '+');
     let uri = `https://www.edsm.net/api-v1/system?sysname=${systemLink}&coords=1`;
     
     if(httpGet(uri).length <= 2 ){
