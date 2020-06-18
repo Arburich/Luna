@@ -14,6 +14,10 @@ exports.run = async (client, message, args) => {
 
 • 3.) Animated Emoji    :: 50 Lunabits
     > Buys you a single Animated Emoji Slot. Nitro only!
+	
+• 4.) Prestige Yourself    :: 1000 Lifetime Lunabits
+    > Your ENTIRE lifetime total will be reset to 0, and your ranks will be removed, to gain a single point of Prestige for every 1000 bits you have! 
+	> Choose this VERY wisely, as it cannot be undone. This does NOT affect your balance. Only Lifetime total.  
 
 =  Note: All items can be rejected at Moderator discretion.  =
 = If you have suggestions for more items, let Arburich know! =`, {code: "asciidoc"});
@@ -57,41 +61,21 @@ exports.run = async (client, message, args) => {
       return;
             })})
         break;
-        case "4":
+		case "4":
         money.fetchBal(message.author.id).then((j) => {
-          if((j.money - 250) < 0){
-            message.channel.send("You need 250 Lunabits for that.");
+          if(j.totalbits < 1000){
+            message.channel.send("You need 1000 lifetime Lunabits for that.");
             return;
     }
-    money.updateBal(message.author.id, -250).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
-                message.channel.send(`${message.author} had 250 Lunabits removed from thier balance . \n**New Balance:** ${i.money} Lunabits`);
-                message.channel.send("Screenshot this and let @Arburich know you purchased this." )
-      return;
-            })})
-        break;
-        case "5":
-        money.fetchBal(message.author.id).then((j) => {
-          if((j.money - 500) < 0){
-            message.channel.send("You need 500 Lunabits for that.");
-            return;
-    }
-    money.updateBal(message.author.id, -500).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
-                message.channel.send(`${message.author} had 500 Lunabits removed from thier balance . \n**New Balance:** ${i.money} Lunabits`);
-                message.channel.send("Screenshot this and let @Arburich know you purchased this." )
-      return;
-            })})
-        break;
-        case "6":
-        money.fetchBal(message.author.id).then((j) => {
-          if((j.money - 1000) < 0){
-            message.channel.send("You need 1000 Lunabits for that.");
-            return;
-    }
-    money.updateBal(message.author.id, -1000).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
-                message.channel.send(`${message.author} had 1000 Lunabits removed from thier balance . \n**New Balance:** ${i.money} Lunabits`);
-                message.channel.send("Screenshot this and let @Arburich know you purchased this." )
-      return;
-            })})
+    
+	money.updatePres(message.author.id, (j.totalbits / 1000)).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
+                message.channel.send(`Congrats ${message.author}! You've recieved ${parseInt(j.totalbits / 1000)} Prestige Rank! You get to start the ranks all over!<:lunao7:641711032359714857>`);
+				message.member.removeRole("486594265242140673").catch(console.error);
+			})
+	money.setTotal(message.author.id, 0).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
+                message.channel.send(`${message.author} had their lifetime bits reset`);
+            })
+			})
         break;
       default:
         message.channel.send("No such item number found. Use ``!helpme shop`` for proper syntax");

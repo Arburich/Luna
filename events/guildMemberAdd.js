@@ -4,6 +4,13 @@ module.exports = (client, member) => {
   // Load the guild's settings
   const settings = client.getGuildSettings(member.guild);
 
+  var moment = require("moment");
+  var fs = require("fs")
+  var members = JSON.parse(fs.readFileSync("./members.json", "utf8"));
+  members["tracking"][member] = moment()
+  members["total"] = client.users.size.toLocaleString()
+  fs.writeFileSync("./members.json", JSON.stringify(members))
+
   // If welcome is off, don't proceed (don't welcome the user)
   if (settings.welcomeEnabled !== "true") return;
 

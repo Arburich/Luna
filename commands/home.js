@@ -1,6 +1,6 @@
 exports.run = async (client, message, args, level) => {
   const embed = {
-  "title": "Home: 59 Virginis, Hilmers Gateway",
+  "title": "59 Virginis, Alchemia Virginis, The Tavern",
   "color": 4751592,
   "image": {
     "url": "https://i.imgur.com/YPWtsgw.png"

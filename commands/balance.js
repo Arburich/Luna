@@ -5,7 +5,7 @@ exports.run = async (client, message, args, level) => {
   const embed = {
         "color": 15866827,
         "title": "__**Balance**__",
-        "description":"\n**" + i.money + "** Lunabits Available\n**" + i.totalbits + "** Lifetime Collected",
+        "description":"\n**" + i.money + "** Lunabits Available\n**" + i.totalbits + "** Lifetime Collected\n**" + i.prestige + "** Prestiges",
         "thumbnail" : {
           url: picture(i.money)
         }
@@ -21,7 +21,7 @@ exports.run = async (client, message, args, level) => {
   const embed = {
         "color": 15866827,
         "title": "__**Balance of User Mentioned**__",
-        "description":"\n**" + i.money + "** Lunabits Available\n**" + i.totalbits + "** Lifetime Collected",
+        "description":"\n**" + i.money + "** Lunabits Available\n**" + i.totalbits + "** Lifetime Collected\n**" + i.prestige + "** Prestiges",
         "thumbnail" : {
           url: picture(i.money)
         }
