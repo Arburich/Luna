@@ -1,7 +1,7 @@
 var moment = require("moment");
 exports.run = async (client, message, args, level) => {
   output = "# The Alchemy Calendar #"
-  output += "\nGalactic Standard Time :: < " + moment().format("HH:mm:ss, MMMM Do, ")+ (Number(moment().format("YYYY")) + 1286).toString() + " >"
+  output += "\nGalactic Standard Time :: < " + moment().utcOffset('+0000').format("HH:mm:ss, MMMM Do, ")+ (Number(moment().format("YYYY")) + 1286).toString() + " >"
   function n(n) {
     return n > 9 ? "" + n: "0" + n;
   }

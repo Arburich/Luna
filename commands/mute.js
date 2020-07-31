@@ -7,12 +7,12 @@ exports.run = async (client, message, args, level) => {
 	  return
   }
   let member = message.mentions.members.first();
-  if(member.roles.has("721779647582306364")) {
-	member.removeRole("721779647582306364").catch(console.error)
+  if(member.roles.has("473242738196742144")) {
+	member.removeRole("473242738196742144").catch(console.error)
 	message.channel.send(member + " was unmuted")
 	
 } else {
-  member.addRole("721779647582306364")
+  member.addRole("473242738196742144")
   message.channel.send(member + " was muted.")
   var output = "Discord ID: \\" + member + " , " + member.displayName + ", " + member  
             +  "\nReason: user has been muted for a talk"

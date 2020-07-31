@@ -13,6 +13,7 @@ let argu = ""
         if(i == args.length-1) argu += args[i];
         else argu += args[i] + " ";
     }
+argu = argu.split(", ")
   function httpGet(theUrl)
 {
     var xmlHttp = new XMLHttpRequest();
@@ -31,7 +32,7 @@ let argu = ""
     return JSON.parse(httpGet(uri));
     }
   var factions = [];
-  var system = download(argu);
+  var system = download(argu[0]);
   
   if(system["docs"]["0"] == undefined){
     message.channel.send("The system name wasn't found. Make sure you are spelling it correctly and that it "
@@ -40,12 +41,21 @@ let argu = ""
   }
   var eddb_id = system["docs"]["0"]["eddb_id"]
   var systemName = system["docs"]["0"]["name"];
-  var testchart = `http://jegin.net/testchart2.php?sysid=${eddb_id}.png`;
-  let responseSystem = system.docs[0];
-  let updatedAt = moment(responseSystem.updated_at);
-  var output = "";
-
-message.channel.send("Last updated " + updatedAt.fromNow(), { files: [testchart] });
+  if(!argu[1]){
+	  var testchart = `http://jegin.net/testchart2.php?sysid=${eddb_id}.png`;
+	  let responseSystem = system.docs[0];
+      let updatedAt = moment(responseSystem.updated_at);
+      var output = "";
+	  message.channel.send("Last updated " + updatedAt.fromNow(), { files: [testchart] }); 
+  }
+  else{
+	var time = parseInt(argu[1])
+	var testchart = `https://jegin.net/testchart2.php?_jpg_csimd=1&sysid=${eddb_id}&ts=${time}&t=1.png`;
+    let responseSystem = system.docs[0];
+    let updatedAt = moment(responseSystem.updated_at);
+    var output = "";
+    message.channel.send("Last updated " + updatedAt.fromNow(), { files: [testchart] });
+  }
 
 }
 

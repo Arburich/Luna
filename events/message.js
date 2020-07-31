@@ -20,6 +20,9 @@ module.exports = (client, message) => {
   if (message.channel.type === "dm"){
 	client.channels.get('468620269255131138').send("Hey <@223604997206573056>, " + message.author + " sent me this in my PM's:\n" + message)
   }
+  if (message.content.includes("discord.gg") || message.content.includes("discordapp.com/invite") || message.content.includes("discord.com/invite")){
+	message.delete()
+}
   
   //if (message.content.toLowerCase().includes("audio") || message.content.toLowerCase().includes("sound")){
 	//client.channels.get('468620269255131138').send("Hey <@223604997206573056>, " + message.author + " sent this with a keyword in " + "http://discordapp.com/channels/" + message.guild.id + "/" + message.channel.id + "/" + message.id + "\n" + message)
@@ -55,7 +58,18 @@ module.exports = (client, message) => {
   const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
   // using this const varName = thing OR otherthign; is a pretty efficient
   // and clean way to grab one of 2 values!
-  if (!cmd) return;
+  if (!cmd){ 
+	var fs = require("fs")
+	var ccData = JSON.parse(fs.readFileSync("./cc.json", "utf8"));
+	commands = Object.keys(ccData)
+	if(commands.includes(command)){
+		message.channel.send(ccData[command].replace("{user}", message.author).replace("{mention}", message.mentions.members.first()))
+		return
+	}
+	else{
+	return
+	}
+  };
 
   // Some commands may not be useable in DMs. This check prevents those commands from running
   // and return a friendly error message.

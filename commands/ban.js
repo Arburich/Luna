@@ -1,7 +1,7 @@
 var moment = require("moment");
 exports.run = async (client, message, args, level) => { // All arguments behind the command name with the prefix
 	const user = message.mentions.users.first(); // returns the user object if an user mention exists
-	const banReason = args.slice(1).join(' '); // Reason of the ban (Everything behind the mention)
+	var banReason = args.slice(1).join(' '); // Reason of the ban (Everything behind the mention)
 // Check if an user mention exists in this message
 	if (!user) {
 		try {
@@ -14,9 +14,9 @@ exports.run = async (client, message, args, level) => { // All arguments behind 
 			return message.reply('Couldn\' get a Discord user with this userID!');
 		}
 	}	
-	if (user === message.author) return message.channel.send('Lynx Corporation cannot have you fire yourself.'); // Check if the user mention or the entered userID is the message author himsmelf
-	if (!banReason) return message.reply('Lynx Corporation requires that a reason is given for being fired.'); // Check if a reason has been given by the message author
-	if (!message.guild.member(user).bannable) return message.reply('Lynx Corporation cannot fire this person as they are a board member.'); // Check if the user is bannable with the bot's permissions
+	if (user === message.author) return message.channel.send('I can\'t ban yourself friend.'); // Check if the user mention or the entered userID is the message author himsmelf
+	if (!banReason) banReason = "user was banned"
+	if (!message.guild.member(user).bannable) return message.reply('That person is my friend!'); // Check if the user is bannable with the bot's permissions
 	
 	await message.guild.ban(user) // Bans the user
 	message.channel.send(user + " was removed from employment at Lynx Corporation.")
