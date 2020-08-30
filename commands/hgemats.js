@@ -1,23 +1,55 @@
 /*
-	Find the nearest system with specified High Grade Emissions drop
-*/
+Find the nearest system with specified High Grade Emissions drop
+ */
 
 // module requires
 const https = require("https");
 
-exports.run = async (client, message, args, level) => {
+exports.run = async(client, message, args, level) => {
 	// list all possible HGE drops
-	let materialsArray = [
-		{ material: "Core Dynamics Composites", allegiance: "Federation", state: "Any" },
-		{ material: "Proprietary Composites", allegiance: "Federation", state: "Any" },
-		{ material: "Imperial Shielding", allegiance: "Empire", state: "Any" },
-		{ material: "Improvised Components", allegiance: "Any", state: "Civil Unrest" },
-		{ material: "Military Grade Alloys", allegiance: "Any", state: "War" }, // state can also be Civil War
-		{ material: "Military Supercapacitors", allegiance: "Any", state: "War" }, // state can also be Civil War
-		{ material: "Pharmaceutical Isolators", allegiance: "Any", state: "Outbreak" },
-		{ material: "Proto Heat Radiators", allegiance: "Any", state: "Boom" },
-		{ material: "Proto Light Alloys", allegiance: "Any", state: "Boom" },
-		{ material: "Proto Radiolic Alloys", allegiance: "Any", state: "Boom" }
+	let materialsArray = [{
+			material: "Core Dynamics Composites",
+			allegiance: "Federation",
+			state: "Any"
+		}, {
+			material: "Proprietary Composites",
+			allegiance: "Federation",
+			state: "Any"
+		}, {
+			material: "Imperial Shielding",
+			allegiance: "Empire",
+			state: "Any"
+		}, {
+			material: "Improvised Components",
+			allegiance: "Any",
+			state: "Civil Unrest"
+		}, {
+			material: "Military Grade Alloys",
+			allegiance: "Any",
+			state: "War"
+		}, // state can also be Civil War
+		{
+			material: "Military Supercapacitors",
+			allegiance: "Any",
+			state: "War"
+		}, // state can also be Civil War
+		{
+			material: "Pharmaceutical Isolators",
+			allegiance: "Any",
+			state: "Outbreak"
+		}, {
+			material: "Proto Heat Radiators",
+			allegiance: "Any",
+			state: "Boom"
+		}, {
+			material: "Proto Light Alloys",
+			allegiance: "Any",
+			state: "Boom"
+		}, {
+			material: "Proto Radiolic Alloys",
+			allegiance: "Any",
+			state: "Boom"
+		}
 	]
 
 	// split out the material that's been looked after and system
@@ -30,23 +62,24 @@ exports.run = async (client, message, args, level) => {
 	// list all materials if first argument was "list" or if no arguments specified
 	if (material == "list" || args.length == 0) {
 		let output = (
-			`== List of all possible materials from an High Grade Emissions signal source. ==\n` +
-			`Finding possible systems for specific material can be found by: !hgemats <material>, <referenceSystem>\n\n`)
+			`== List of all possible materials from an High Grade Emissions signal source. ==\n` + 
+`Finding possible systems for specific material can be found by: !hgemats <material>, <referenceSystem>\n\n`)
 		for (mat of materialsArray) {
 			output += (
-				`= ${mat.material} =\n` +
-				`Allegiance :: ${mat.allegiance}\n` +
-				`State      :: ${mat.state == "War" ? "War or Civil war" : mat.state}\n`
-			);
+				`= ${mat.material} =\n` + 
+				`Allegiance :: ${mat.allegiance}\n` + 
+`State      :: ${mat.state == "War" ? "War or Civil war" : mat.state}\n`);
 		}
-		return message.channel.send(output, {code: "asciidoc"});
+		return message.channel.send(output, {
+			code: "asciidoc"
+		});
 	}
 
 	// do a quick check for material and refSystem if they contain tags
 	if (material.includes("@") || refSystem.includes("@")) {
 		// and if they have @everyone
 		if (material.toLowerCase().includes("@everyone") || material.toLowerCase().includes("@here")
-			|| refSystem.includes("@everyone") || refSystem.includes("@here")) {
+			 || refSystem.includes("@everyone") || refSystem.includes("@here")) {
 			return message.reply(`Trying to be funny pinging lots of people? Well... You're not..`);
 		}
 		return message.reply(`Tagging friends through a bot? Rude...`);
@@ -75,8 +108,8 @@ exports.run = async (client, message, args, level) => {
 
 		if (!validMatFound) {
 			return message.reply(
-				`Invalid material name: \`${material}\`.\n`+
-				`Valid materials: ${validMaterials.join(", ")}`);
+				`Invalid material name: \`${material}\`.\n` + 
+`Valid materials: ${validMaterials.join(", ")}`);
 		}
 	}
 
@@ -110,9 +143,9 @@ exports.run = async (client, message, args, level) => {
 	// check if any systems were found, if not say to increase the radius
 	if (systemCandidates.length == 0) {
 		return message.reply(
-			`No systems within distance of: ${radius}Ly of: \`${refSystem}\`.\n` +
-			`Try with increasing the radius to search for (up to max 100Ly)` +
-			`\`!hgemats <material>, <referenceSystem>, <radius>\``);
+			`No systems within distance of: ${radius}Ly of: \`${refSystem}\`.\n` + 
+			`Try with increasing the radius to search for (up to max 100Ly)` + 
+`\`!hgemats <material>, <referenceSystem>, <radius>\``);
 	}
 
 	// sort the list according to the distance from reference
@@ -120,23 +153,25 @@ exports.run = async (client, message, args, level) => {
 
 	// now create the output and throw in the first 20 found system names
 	let output = (`= Possible systems where: "${material}" should be found within: ${radius}Ly.=\n` +
-		`${systemCandidates.length > 20 ? "= Limited to 20 closest systems =\n" : ""}` +
-		`\nDistance :: SystemName`);
+		`${systemCandidates.length > 20 ? "= Limited to 20 closest systems =\n" : ""}` + 
+`\nDistance :: SystemName`);
 
 	for (let i = 0; i < Math.min(20, systemCandidates.length); i++) {
 		output += `\n${systemCandidates[i].distance.toString().padStart(6, " ")}Ly :: ${systemCandidates[i].name}`;
 	}
 
-	return message.channel.send(output, {code: "asciidoc"});
+	return message.channel.send(output, {
+		code: "asciidoc"
+	});
 }
 
 async function getSystems(refSystem, radius) {
-	return new Promise (function (resolve, reject) {
+	return new Promise(function (resolve, reject) {
 		https.get(
-			`https://www.edsm.net/api-v1/sphere-systems` +
-			`?systemName=${encodeURIComponent(refSystem)}` +
-			`&showInformation=1` +
-			`&radius=${radius}`,
+			`https://www.edsm.net/api-v1/sphere-systems` + 
+			`?systemName=${encodeURIComponent(refSystem)}` + 
+			`&showInformation=1` + 
+`&radius=${radius}`,
 			(res) => {
 
 			if (res.statusCode < 200 || res.statusCode > 300) {
@@ -185,8 +220,8 @@ exports.conf = {
 }
 
 exports.help = {
-  	name: "hgemats",
-  	category: "Custom Commands",
-  	description: "Lists systems with possible HGE drops",
-  	usage: "hgemats <material>, <reference system>, <radius>"
+	name: "hgemats",
+	category: "Custom Commands",
+	description: "Lists systems with possible HGE drops",
+	usage: "hgemats <material>, <reference system>, <radius>"
 }
