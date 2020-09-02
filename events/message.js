@@ -21,7 +21,7 @@ module.exports = (client, message) => {
 		}
 	}
 	if (message.channel.type === "dm") {
-		client.channels.get('468620269255131138').send("Hey <@223604997206573056>, " + message.author + " sent me this in my PM's:\n" + message)
+		client.channels.cache.get('466269232368320552').send("Hey <@223604997206573056>, " + message.author.toString()  + " sent me this in my PM's:\n" + message.content)
 	}
 	if (message.content.includes("discord.gg") || message.content.includes("discordapp.com/invite") || message.content.includes("discord.com/invite")) {
 		message.delete()
@@ -64,7 +64,7 @@ module.exports = (client, message) => {
 	// and clean way to grab one of 2 values!
 	if (!cmd) {
 		var fs = require("fs")
-			var ccData = JSON.parse(fs.readFileSync("./cc.json", "utf8"));
+			var ccData = JSON.parse(fs.readFileSync(__dirname + "/../commandStorage/cc.json", "utf8"));
 		commands = Object.keys(ccData)
 			if (commands.includes(command)) {
 				message.channel.send(ccData[command].replace("{user}", message.author).replace("{mention}", message.mentions.members.first()))

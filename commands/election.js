@@ -1,6 +1,6 @@
 exports.run = async(client, message, args, level) => { // eslint-disable-line no-unused-vars
 	var fs = require("fs")
-		var electionData = JSON.parse(fs.readFileSync("./election.json", "utf8"));
+		var electionData = JSON.parse(fs.readFileSync(__dirname + "/../commandStorage/commandStorage/election.json", "utf8"));
 	if (args[0] == "add") {
 		electionData["names"][Object.keys(electionData["names"]).length] = args[1]
 			message.channel.send("Added " + args[1] + " to the nomination list!")
@@ -32,7 +32,7 @@ exports.run = async(client, message, args, level) => { // eslint-disable-line no
 		electionData["channels"][Object.keys(electionData["channels"]).length] = args[1]
 			message.channel.send("Added " + args[1] + " to the channel output list.")
 	}
-	fs.writeFileSync("./election.json", JSON.stringify(electionData))
+	fs.writeFileSync(__dirname + "/../commandStorage/commandStorage/election.json", JSON.stringify(electionData))
 };
 
 exports.conf = {

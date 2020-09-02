@@ -6,21 +6,9 @@ exports.run = async(client, message, args, level) => {
 			message.channel.send("Need a number!")
 			return
 		}
-
-		if (message.channel.type == 'text') {
-			message.channel.fetchMessages({
-				limit: args[0]
-			})
-			.then(messages => {
-				message.channel.bulkDelete(messages);
-				messagesDeleted = messages.array().length; // number of messages deleted
-
-			})
-			.catch(err => {
-				console.log('Error while doing Bulk Delete');
-				console.log(err);
-			});
-		}
+     await message.channel.messages.fetch({ limit: toDel }).then(messages => { // Fetches the messages
+    message.channel.bulkDelete(messages // Bulk deletes all messages that have been fetched and are not older than 14 days (due to the Discord API)
+)});
 };
 
 exports.conf = {

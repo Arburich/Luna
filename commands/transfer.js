@@ -1,4 +1,4 @@
-const money = require('./discord-muns.js');
+const money = require(__dirname + '/../commandStorage/discord-muns.js');
 exports.run = async(client, message, args) => {
 	if (!args || args.length < 1 || !args[1]) {
 		message.channel.send("Incorrect syntax. Use ``!helpme transfer`` for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");

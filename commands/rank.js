@@ -8,7 +8,7 @@ exports.run = async(client, message, args, level) => {
 				argu += args[i] + " ";
 		}
 		if (!args[0]) {
-			var rankData = fs.readFileSync("./ranks.txt", "utf8")
+			var rankData = fs.readFileSync("./commandStorage/ranks.txt", "utf8")
 				message.channel.send("== Alchemy Den Ranks ==\n" + rankData, {
 					code: "asciidoc"
 				})
@@ -19,14 +19,15 @@ exports.run = async(client, message, args, level) => {
 				message.channel.send("I need a name of a role to make.")
 				return
 			}
-			if (message.member.roles.find(r => r.name === "Moderator")) {
-				message.guild.createRole(({
-						name: argu,
-						color: 0
-					}))
-				var rankData = fs.readFileSync("./ranks.txt", "utf8")
+			if (message.member.roles.cache.find(r => r.name === "Moderator")) {
+				message.guild.roles.create({
+  data: {
+    name: argu,
+    color: 0,}
+})
+				var rankData = fs.readFileSync("./commandStorage/ranks.txt", "utf8")
 					rankData += "\n" + argu
-					fs.writeFileSync("./ranks.txt", rankData)
+					fs.writeFileSync("./commandStorage/ranks.txt", rankData)
 					message.channel.send("Created the Rank " + argu)
 			} else {
 				message.channel.send("You need to be a moderator to create or delete ranks.")
@@ -36,7 +37,7 @@ exports.run = async(client, message, args, level) => {
 		} // End of Create
 
 		if (args[0] == "list") {
-			var rankData = fs.readFileSync("./ranks.txt", "utf8")
+			var rankData = fs.readFileSync("./commandStorage/ranks.txt", "utf8")
 				message.channel.send("== Alchemy Den Ranks ==\n" + rankData, {
 					code: "asciidoc"
 				})
@@ -44,12 +45,12 @@ exports.run = async(client, message, args, level) => {
 		}
 
 		if (args[0] == "delete") {
-			if (message.member.roles.find(r => r.name === "Moderator")) {
-				var rankData = fs.readFileSync("./ranks.txt", "utf8")
+			if (message.member.roles.cache.find(r => r.name === "Moderator")) {
+				var rankData = fs.readFileSync("./commandStorage/ranks.txt", "utf8")
 					if (rankData.includes(argu)) {
-						message.guild.roles.find(role => role.name === argu).delete();
+						message.guild.roles.cache.find(role => role.name === argu).delete();
 						rankData = rankData.replace("\n" + argu, "")
-							fs.writeFileSync("./ranks.txt", rankData)
+							fs.writeFileSync("./commandStorage/ranks.txt", rankData)
 							message.channel.send("Deleted the rank")
 							return
 					} else {
@@ -74,14 +75,14 @@ exports.run = async(client, message, args, level) => {
 			else
 				theRank += args[i] + " ";
 		}
-		var rankData = fs.readFileSync("./ranks.txt", "utf8")
-		if (rankData.includes(theRank)) {
-			let role = message.guild.roles.find('name', theRank)
-				if (message.member.roles.find(r => r.name === theRank)) {
-					message.member.removeRole(role);
+		var rankData = fs.readFileSync(__dirname + "/../commandStorage/ranks.txt", "utf8")
+		if (rankData.toLowerCase().includes(theRank.toLowerCase())) {
+			let role = message.guild.roles.cache.find(r => r.name.toLowerCase() === theRank.toLowerCase())
+				if (message.member.roles.cache.find(r => r.name.toLowerCase() === theRank.toLowerCase())) {
+					message.member.roles.remove(role);
 					message.channel.send("You were removed from " + role.name)
 				} else {
-					message.member.addRole(role)
+					message.member.roles.add(role)
 					message.channel.send("You were added to " + role.name)
 				}
 
@@ -100,5 +101,5 @@ exports.help = {
 	name: "rank",
 	category: "Custom Commands",
 	description: "List, Join, Leave, Create, or Delete a rank",
-	usage: "cc <rank | list | create | delete>"
+	usage: "rank <rank | list | create | delete>"
 };

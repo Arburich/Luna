@@ -15,12 +15,12 @@ exports.run = async(client, message, args, level) => {
 		let cmd = argu.split(",")
 		if (!cmd || cmd.length < 3)
 			return message.channel.send("Incorrect Syntax. Use ``!helpme warn`` for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
-		var output = "Discord ID: \\" + member + " , " + member.displayName + ", " + member
+		var output = "Discord ID: " + member.toString() + " , " + member.user.tag + ", " + member
 		 + "\nReason: " + cmd[1]
 		 + "\nTime: " + moment().format("h:mma UTC, MM/DD/YYYY")
 		 + "\nAction: " + cmd[2]
-		client.channels.get("544009403326791733").send(output)
-		message.channel.send(member + " was given a warning");
+		client.channels.cache.get("544009403326791733").send(output)
+		message.channel.send(member.toString() + " was given a warning");
 };
 
 exports.conf = {

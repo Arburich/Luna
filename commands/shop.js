@@ -1,4 +1,4 @@
-const money = require('./discord-muns.js');
+const money = require(__dirname + '/../commandStorage/discord-muns.js');
 exports.run = async(client, message, args) => {
 	if (!args) {
 		message.channel.send("Incorrect syntax. Use !helpme shop for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
@@ -41,11 +41,11 @@ exports.run = async(client, message, args) => {
 			break;
 		case "2":
 			money.fetchBal(message.author.id).then((j) => {
-				if ((j.money - 30) < 0) {
+				if ((j.money - 50) < 0) {
 					message.channel.send("You need 50 Lunabits for that.");
 					return;
 				}
-				money.updateBal(message.author.id, -30).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
+				money.updateBal(message.author.id, -50).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
 					message.channel.send(`${message.author} had 30 Lunabits removed from thier balance . \n**New Balance:** ${i.money} Lunabits`);
 					message.channel.send("Screenshot this and let an @Admin know you purchased a custom command.")
 					return;
@@ -73,8 +73,8 @@ exports.run = async(client, message, args) => {
 				}
 
 				money.updatePres(message.author.id, (j.totalbits / 1000)).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
-					message.channel.send(`Congrats ${message.author}! You've recieved ${parseInt(j.totalbits / 1000)} Prestige Rank! You get to start the ranks all over!<:lunao7:641711032359714857>`);
-					message.member.removeRole("486594265242140673").catch(console.error);
+					message.channel.send(`Congrats ${message.author}! You've recieved ${parseInt(j.totalbits / 1000)} Prestige Rank! You get to start the ranks all over! <:lunao7:728048963000729681>`);
+					message.member.roles.remove("486594265242140673").catch(console.error);
 				})
 				money.setTotal(message.author.id, 0).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
 					message.channel.send(`${message.author} had their lifetime bits reset`);

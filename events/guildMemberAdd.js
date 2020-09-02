@@ -6,10 +6,10 @@ module.exports = (client, member) => {
 
 	var moment = require("moment");
 	var fs = require("fs")
-		var members = JSON.parse(fs.readFileSync("./members.json", "utf8"));
-	members["tracking"][member] = moment()
-		members["total"] = client.users.size.toLocaleString()
-		fs.writeFileSync("./members.json", JSON.stringify(members))
+		var members = JSON.parse(fs.readFileSync(__dirname + "/../commandStorage/members.json", "utf8"));
+		members["tracking"][member] = moment()
+		members["total"] = client.users.cache.size.toLocaleString()
+		fs.writeFileSync(__dirname + "/../commandStorage/members.json", JSON.stringify(members))
 
 		// If welcome is off, don't proceed (don't welcome the user)
 		if (settings.welcomeEnabled !== "true")
@@ -22,5 +22,5 @@ module.exports = (client, member) => {
 	welcomeMessage = welcomeMessage.replace("{{welcomer}}", "<@&467079026331090944>");
 	// Send the welcome message to the welcome channel
 	// There's a place for more configs here.
-	member.guild.channels.find("name", settings.welcomeChannel).send(welcomeMessage).catch(console.error);
+	client.channels.cache.get(settings.welcomeChannel).send(welcomeMessage).catch(console.error);
 };

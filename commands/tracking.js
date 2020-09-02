@@ -1,6 +1,6 @@
 exports.run = async(client, message, args, level) => {
 	var fs = require("fs")
-		var members = JSON.parse(fs.readFileSync("./members.json", "utf8"));
+		var members = JSON.parse(fs.readFileSync(__dirname + "/../commandStorage/members.json", "utf8"));
 	var moment = require("moment");
 	var todaysdate = moment();
 

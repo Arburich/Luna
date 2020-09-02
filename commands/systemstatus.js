@@ -124,8 +124,13 @@ exports.run = async(client, message, args, level) => {
 
 	//setTimeout(go, 1000);
 	//message.channel.send();
-	message.channel.sendFile(testchart).then(function () {
-		setTimeout(go, 1000);
+	message.channel.send({
+			files: [{
+                attachment: testchart,
+                name: 'file.png'
+				}]
+		}).then(function () {
+		setTimeout(go, 500);
 	});
 
 }

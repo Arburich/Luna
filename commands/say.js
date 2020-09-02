@@ -15,13 +15,13 @@ exports.run = async(client, message, args, level) => { // eslint-disable-line no
 			else
 				argu += args[i] + " ";
 		}
-		chan = client.channels.get(args[0])
+		chan = client.channels.cache.get(args[0])
 		checkChannel = args[0].replace(/\D/g, '');
-	client.channels.get(checkChannel).startTyping();
+	client.channels.cache.get(checkChannel).startTyping();
 	var timeout = argu.length * 150
 		setTimeout(() => {
-			client.channels.get(checkChannel).send(argu).then((message) => {
-				client.channels.get(checkChannel).stopTyping();
+			client.channels.cache.get(checkChannel).send(argu).then((message) => {
+				client.channels.cache.get(checkChannel).stopTyping();
 			});
 		}, timeout)
 		//client.channels.get(checkChannel).send(argu);

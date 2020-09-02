@@ -1,4 +1,4 @@
-const money = require('./discord-muns.js');
+const money = require(__dirname + '/../commandStorage/discord-muns.js');
 exports.run = async(client, message, args, level) => {
 	if (!args[0]) {
 		money.fetchBal(message.author.id).then((i) => { // money.fetchBal grabs the userID, finds it, and puts it into 'i'.

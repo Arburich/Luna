@@ -1,4 +1,4 @@
-const money = require('./discord-muns.js');
+const money = require(__dirname + '/../commandStorage/discord-muns.js');
 exports.run = async(client, message, args) => {
 	if (!args || args.length < 1 || !args[1]) {
 		message.channel.send("Incorrect syntax. Use ``!helpme reward`` for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
@@ -12,51 +12,51 @@ exports.run = async(client, message, args) => {
 	let member = message.mentions.members.first();
 
 	function addRole(role) {
-		if (member.roles.has("486585462379773961")) {
-			member.removeRole("486585462379773961").catch(console.error);
+		if (member.roles.cache.has("486585462379773961")) {
+			member.roles.remove("486585462379773961").catch(console.error);
 		}
-		if (member.roles.has("486588517158486016")) {
-			member.removeRole("486588517158486016").catch(console.error);
+		if (member.roles.cache.has("486588517158486016")) {
+			member.roles.remove("486588517158486016").catch(console.error);
 		}
-		if (member.roles.has("486592445782687765")) {
-			member.removeRole("486592445782687765").catch(console.error);
+		if (member.roles.cache.has("486592445782687765")) {
+			member.roles.remove("486592445782687765").catch(console.error);
 		}
-		if (member.roles.has("486592970217488404")) {
-			member.removeRole("486592970217488404").catch(console.error);
+		if (member.roles.cache.has("486592970217488404")) {
+			member.roles.remove("486592970217488404").catch(console.error);
 		}
-		if (member.roles.has("486593476260265994")) {
-			member.removeRole("486593476260265994").catch(console.error);
+		if (member.roles.cache.has("486593476260265994")) {
+			member.roles.remove("486593476260265994").catch(console.error);
 		}
-		if (member.roles.has("486594265242140673")) {
-			member.removeRole("486594265242140673").catch(console.error);
+		if (member.roles.cache.has("486594265242140673")) {
+			member.roles.remove("486594265242140673").catch(console.error);
 		}
-		member.addRole(role).catch(console.error);
+		member.roles.add(role).catch(console.error);
 	}
 
 	money.updateBal(memberID, args[1]).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
-		message.channel.send(`${member} got ${args[1]} Lunabits.\n**New Balance:** ${i.money} Lunabits\n` + "**Lifetime Collected**: " + i.totalbits + " Lunabits\n" + `**Prestiges:** ${i.prestige}`);
-		if (i.totalbits > 99 && i.totalbits < 200 && !member.roles.has("486585462379773961")) {
-			message.channel.send(member + ", you are promoted to Rank 1: Follower! https://www.youtube.com/watch?v=sSxx12vADYk")
+		message.channel.send(`${member.toString()} got ${args[1]} Lunabits.\n**New Balance:** ${i.money} Lunabits\n` + "**Lifetime Collected**: " + i.totalbits + " Lunabits\n" + `**Prestiges:** ${i.prestige}`);
+		if (i.totalbits > 99 && i.totalbits < 200 && !member.roles.cache.has("486585462379773961")) {
+			message.channel.send(member.toString() + ", you are promoted to Rank 1: Follower! https://www.youtube.com/watch?v=sSxx12vADYk")
 			addRole("486585462379773961")
 		}
-		if (i.totalbits > 199 && i.totalbits < 350 && !member.roles.has("486588517158486016")) {
-			message.channel.send(member + ", you are promoted to Rank 2: Supporter! https://www.youtube.com/watch?v=sSxx12vADYk")
+		if (i.totalbits > 199 && i.totalbits < 350 && !member.roles.cache.has("486588517158486016")) {
+			message.channel.send(member.toString() + ", you are promoted to Rank 2: Supporter! https://www.youtube.com/watch?v=sSxx12vADYk")
 			addRole("486588517158486016")
 		}
-		if (i.totalbits > 349 && i.totalbits < 500 && !member.roles.has("486592445782687765")) {
-			message.channel.send(member + ", you are promoted to Rank 3: Dignitary! https://www.youtube.com/watch?v=sSxx12vADYk")
+		if (i.totalbits > 349 && i.totalbits < 500 && !member.roles.cache.has("486592445782687765")) {
+			message.channel.send(member.toString() + ", you are promoted to Rank 3: Dignitary! https://www.youtube.com/watch?v=sSxx12vADYk")
 			addRole("486592445782687765")
 		}
-		if (i.totalbits > 499 && i.totalbits < 700 && !member.roles.has("486592970217488404")) {
-			message.channel.send(member + ", you are promoted to Rank 4: Ambassador! https://www.youtube.com/watch?v=sSxx12vADYk")
+		if (i.totalbits > 499 && i.totalbits < 700 && !member.roles.cache.has("486592970217488404")) {
+			message.channel.send(member.toString() + ", you are promoted to Rank 4: Ambassador! https://www.youtube.com/watch?v=sSxx12vADYk")
 			addRole("486592970217488404")
 		}
-		if (i.totalbits > 699 && i.totalbits < 1000 && !member.roles.has("486593476260265994")) {
-			message.channel.send(member + ", you are promoted to Rank 5: Chief! https://www.youtube.com/watch?v=sSxx12vADYk")
+		if (i.totalbits > 699 && i.totalbits < 1000 && !member.roles.cache.has("486593476260265994")) {
+			message.channel.send(member.toString() + ", you are promoted to Rank 5: Chief! https://www.youtube.com/watch?v=sSxx12vADYk")
 			addRole("486593476260265994")
 		}
-		if (i.totalbits > 999 && !member.roles.has("486594265242140673")) {
-			message.channel.send(member + ", you are promoted to Rank 6: Commander! https://www.youtube.com/watch?v=sSxx12vADYk")
+		if (i.totalbits > 999 && !member.roles.cache.has("486594265242140673")) {
+			message.channel.send(member.toString() + ", you are promoted to Rank 6: Commander! https://www.youtube.com/watch?v=sSxx12vADYk")
 			addRole("486594265242140673")
 		}
 		return;

@@ -1,5 +1,5 @@
 exports.run = async(client, message, args, level) => { // eslint-disable-line no-unused-vars
-	var items = require('../itemsJSON.json');
+	var items = require(__dirname + '/../commandStorage/itemsJSON.json');
 	if (!args[0]) {
 		var num = Math.floor(Math.random() * 422) + 1
 	} else if (parseInt(args[0]) >= 1 || parseInt(args[0]) <= 422) {

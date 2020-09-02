@@ -16,7 +16,7 @@ module.exports = { // This uses chaining instead of serializing
 				function createDb() { // Root
 					if (log)
 						console.log('Creating Database Chain to store the userID money');
-					db = new sqlite3.Database('./userMoneyNewWithPrestige.sqlite', createTable);
+					db = new sqlite3.Database(__dirname + '/../commandStorage/userMoneyNewWithPrestige.sqlite', createTable);
 				}
 				function createTable() { // Extends createDb
 					db.run("CREATE TABLE IF NOT EXISTS moneyset (userID TEXT, money INTEGER, lastDaily TEXT, totalbits INTEGER, prestige INTEGER)", checkIfCreated);
@@ -85,7 +85,7 @@ module.exports = { // This uses chaining instead of serializing
 				function createDb() { // Root
 					if (log)
 						console.log('Creating Database Chain to store the userID money');
-					db = new sqlite3.Database('./userMoneyNewWithPrestige.sqlite', createTable);
+					db = new sqlite3.Database(__dirname + '/../commandStorage/userMoneyNewWithPrestige.sqlite', createTable);
 				}
 				function createTable() { // Extends createDb
 					db.run("CREATE TABLE IF NOT EXISTS moneyset (userID TEXT, money INTEGER, lastDaily TEXT, totalbits INTEGER, prestige INTEGER)", checkIfCreated);
@@ -144,7 +144,7 @@ module.exports = { // This uses chaining instead of serializing
 				function createDb() { // Root
 					if (log)
 						console.log('Creating Database Chain');
-					db = new sqlite3.Database('./userMoneyNewWithPrestige.sqlite', createTable);
+					db = new sqlite3.Database(__dirname + '/../commandStorage/userMoneyNewWithPrestige.sqlite', createTable);
 				}
 				function createTable() { // Extends createDb
 					if (log)
@@ -218,7 +218,7 @@ module.exports = { // This uses chaining instead of serializing
 				function createDb() { // Root
 					if (log)
 						console.log('Creating Database Chain to store the userID money');
-					db = new sqlite3.Database('./userMoneyNewWithPrestige.sqlite', createTable);
+					db = new sqlite3.Database(__dirname + '/../commandStorage/userMoneyNewWithPrestige.sqlite', createTable);
 				}
 				function createTable() { // Extends createDb
 					db.run("CREATE TABLE IF NOT EXISTS moneyset (userID TEXT, money INTEGER, lastDaily TEXT, totalbits INTEGER, prestige INTEGER)", checkIfCreated);
@@ -284,7 +284,7 @@ module.exports = { // This uses chaining instead of serializing
 				function createDb() { // Root
 					if (log)
 						console.log('Creating Database Chain to store the userID money');
-					db = new sqlite3.Database('./userMoneyNewWithPrestige.sqlite', createTable);
+					db = new sqlite3.Database(__dirname + '/../commandStorage/userMoneyNewWithPrestige.sqlite', createTable);
 				}
 				function createTable() { // Extends createDb
 					db.run("CREATE TABLE IF NOT EXISTS moneyset (userID TEXT, money INTEGER, lastDaily TEXT, totalbits INTEGER, prestige INTEGER)", checkIfCreated);
@@ -350,7 +350,7 @@ module.exports = { // This uses chaining instead of serializing
 				function createDb() { // Root
 					if (log)
 						console.log('Creating Database Chain to store the userID money');
-					db = new sqlite3.Database('./userMoneyNewWithPrestige.sqlite', createTable);
+					db = new sqlite3.Database(__dirname + '/../commandStorage/userMoneyNewWithPrestige.sqlite', createTable);
 				}
 				function createTable() { // Extends createDb
 					db.run("CREATE TABLE IF NOT EXISTS moneyset (userID TEXT, money INTEGER, lastDaily TEXT, totalbits INTEGER, prestige INTEGER)", checkIfCreated);

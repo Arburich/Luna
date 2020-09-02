@@ -44,7 +44,7 @@ exports.run = async(client, message, args, level) => {
 	var distance = Math.sqrt(Math.pow((sys2["coords"]["x"] - sys1["coords"]["x"]), 2)
 			 + Math.pow((sys2["coords"]["y"] - sys1["coords"]["y"]), 2)
 			 + Math.pow((sys2["coords"]["z"] - sys1["coords"]["z"]), 2)).toFixed(2);
-	msg.edit("The distance between ``" + systems[0] + "`` and ``" + systems[1] + "`` is ``" + distance + " ly``");
+	msg.edit("The distance between ``" + systems[0].trim() + "`` and ``" + systems[1].trim() + "`` is ``" + distance + " ly``");
 };
 
 exports.conf = {

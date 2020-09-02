@@ -3,7 +3,7 @@ var moment = require("moment");
 const Discord = require("discord.js");
 exports.run = async(client, message, args, level) => {
 	if (!args[0]) {
-		message.channel.send("Incorrect syntax, use ``!helpme factionstatus`` for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
+		message.channel.send("Incorrect syntax, use ``!helpme update`` for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
 		return;
 	}
 	let argu = ""

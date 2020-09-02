@@ -3,7 +3,7 @@ var moment = require("moment");
 const Discord = require("discord.js");
 exports.run = async(client, message, args, level) => {
 	if (!args[0]) {
-		message.channel.send("Incorrect syntax, use ``!helpme systemstatus`` for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
+		message.channel.send("Incorrect syntax, use ``!helpme chart`` for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
 		return;
 	}
 
@@ -48,7 +48,10 @@ exports.run = async(client, message, args, level) => {
 		let updatedAt = moment(responseSystem.updated_at);
 		var output = "";
 		message.channel.send("Last updated " + updatedAt.fromNow(), {
-			files: [testchart]
+			 files: [{
+                attachment: testchart,
+                name: 'file.png'
+				}]
 		});
 	} else {
 		var time = parseInt(argu[1])
@@ -57,7 +60,10 @@ exports.run = async(client, message, args, level) => {
 		let updatedAt = moment(responseSystem.updated_at);
 		var output = "";
 		message.channel.send("Last updated " + updatedAt.fromNow(), {
-			files: [testchart]
+			files: [{
+                attachment: testchart,
+                name: 'file.png'
+				}]
 		});
 	}
 

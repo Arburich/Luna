@@ -11,7 +11,7 @@ exports.run = (client, message, args, level) => {
 	message.channel.send(`= Luna Status =
 • Mem Usage  :: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB
 • Uptime     :: ${duration}
-• Users      :: ${client.users.size.toLocaleString()}
+• Users      :: ${client.users.cache.size.toLocaleString()}
 • Github     :: https://github.com/Arburich/Luna
 = Luna was created by Arburich <3. Thanks Luna! =`, {
 		code: "asciidoc"
