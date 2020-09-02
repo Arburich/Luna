@@ -14,7 +14,7 @@ const {
 } = require("util");
 const readdir = promisify(require("fs").readdir);
 const Enmap = require("enmap");
-const EnmapLevel = require("enmap-level");
+//const EnmapLevel = require("enmap-level");
 const http = require('http');
 // This is your client. Some people call it `bot`, some people call it `self`,
 // some might call it `cootchie`. Either way, when you see `client.something`,
@@ -41,9 +41,9 @@ client.aliases = new Enmap();
 // essentially saves a collection to disk. This is great for per-server configs,
 // and makes things extremely easy for this purpose.
 client.settings = new Enmap({
-		provider: new EnmapLevel({
-			name: "settings"
-		})
+		//provider: new EnmapLevel({
+			//name: "settings"
+		//})
 	});
 
 // We're doing real fancy node 8 async/await stuff here, and to do that

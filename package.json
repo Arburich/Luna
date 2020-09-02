@@ -29,7 +29,6 @@
     "discord-money": "^0.2.0",
     "discord.js": "^11.4.2",
     "enmap": "^2.7.2",
-    "enmap-level": "^2.1.0",
     "express": "^4.16.4",
     "forever": "^0.15.3",
     "jquery": "^3.3.1",

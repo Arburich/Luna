@@ -6,10 +6,10 @@ exports.run = async(client, message, args, level) => { // All arguments behind t
 	if (!user) {
 		try {
 			// Check if a valid userID has been entered instead of a Discord user mention
-			if (!message.guild.members.get(args.slice(0, 1).join(' ')))
+			if (!message.guild.members.cache.get(args.slice(0, 1).join(' ')))
 				throw new Error('Couldn\' get a Discord user with this userID!');
 			// If the client (bot) can get a user with this userID, it overwrites the current user variable to the user object that the client fetched
-			user = message.guild.members.get(args.slice(0, 1).join(' '));
+			user = message.guild.members..cache.get(args.slice(0, 1).join(' '));
 			user = user.user;
 		} catch (error) {
 			return message.reply('Couldn\' get a Discord user with this userID!');
@@ -23,12 +23,12 @@ exports.run = async(client, message, args, level) => { // All arguments behind t
 				return message.reply('That person is my friend!'); // Check if the user is bannable with the bot's permissions
 
 			await message.guild.ban(user) // Bans the user
-			message.channel.send(user + " was removed from employment at Lynx Corporation.")
-			var output = "Discord ID: \\" + user + " , " + user.displayName + ", " + user
-			 + "\nReason: " + banReason
-			 + "\nTime: " + moment().format("h:mma UTC, MM/DD/YYYY")
-			 + "\nAction: Permanent Ban"
-			client.channels.get("714891037809836153").send(output)
+			message.channel.send(user + " was removed from Alchemy Den. Permanently. :knife:")
+			vvar output = "Discord ID: \\" + member + " , " + member.displayName + ", " + member
+		 + "\nReason: " + banReason
+		 + "\nTime: " + moment().format("h:mma UTC, MM/DD/YYYY")
+		 + "\nAction: Banned."
+		client.channels.get("750390723005907026").send(output)
 };
 
 exports.conf = {
