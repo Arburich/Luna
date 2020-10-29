@@ -25,6 +25,7 @@
   "homepage": "https://github.com/Arburich/Luna",
   "dependencies": {
     "all": "0.0.0",
+    "canvas": "^2.6.1",
     "chalk": "^4.1.0",
     "discord-money": "^0.2.0",
     "discord.js": "^12.3.1",
@@ -33,6 +34,7 @@
     "forever": "^3.0.2",
     "jquery": "^3.5.1",
     "jsdom": "^16.4.0",
+    "merge-images": "^2.0.0",
     "moment": "^2.27.0",
     "moment-duration-format": "^2.3.2",
     "net": "1.0.2",

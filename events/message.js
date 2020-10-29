@@ -8,13 +8,19 @@ module.exports = (client, message) => {
 	if (message.author.bot)
 		return;
 	if (message.content.toLowerCase().includes("thanks luna"))
-		message.channel.send("You're Welcome! :purple_heart:"); //You're Welcome! :heart:
+		message.channel.send("You're Welcome! <:lunawave:728048962744877147>");
+	if (message.content.toLowerCase().includes("thanks woona"))
+		message.channel.send("You're Welcome! <:lunawave:728048962744877147>");
+	if (message.content.toLowerCase().includes("thank you woona"))
+		message.channel.send("You're Welcome! <:lunawave:728048962744877147>");
+    if (message.content.toLowerCase().includes("thank you luna"))
+		message.channel.send("You're Welcome! <:lunawave:728048962744877147>");	//You're Welcome! :heart:
 	if (message.content.toLowerCase().includes("sorry luna"))
-		message.channel.send("It's ok fren :purple_heart:"); //It's ok fren :purple_heart:
+		message.channel.send("It's ok fren <:lunasweat:728048962766110760>"); //It's ok fren :purple_heart:
 	if (message.content.toLowerCase().includes("happy birthday luna"))
-		message.channel.send("Thanks fren! :cake: :purple_heart:");
+		message.channel.send("Thanks fren! :cake: <:lunahype:728048962367389728>");
 	if (message.content.toLowerCase().includes("love you luna"))
-		message.channel.send("I love you too fren :purple_heart:"); //It's ok fren :purple_heart:
+		message.channel.send("I love you too fren <:lunahype:728048962367389728>"); //It's ok fren :purple_heart:
 	if (message.channel.id == "466276572836397056") {
 		if (message.attachments.size > 0) {
 			message.react(`💙`)

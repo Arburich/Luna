@@ -46,7 +46,7 @@ exports.run = async(client, message, args) => {
 					return;
 				}
 				money.updateBal(message.author.id, -50).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
-					message.channel.send(`${message.author} had 30 Lunabits removed from thier balance . \n**New Balance:** ${i.money} Lunabits`);
+					message.channel.send(`${message.author} had 50 Lunabits removed from thier balance . \n**New Balance:** ${i.money} Lunabits`);
 					message.channel.send("Screenshot this and let an @Admin know you purchased a custom command.")
 					return;
 				})
