@@ -40,7 +40,8 @@ exports.run = async(client, message, args, level) => {
 		var type = ""
 
 		var fs = require("fs")
-		var comms = JSON.parse(fs.readFileSync("./commandStorage/commodities.json", "utf8"));
+		//var comms = JSON.parse(fs.readFileSync("./commandStorage/commodities.json", "utf8"));
+		var comms = JSON.parse(httpGet("https://eddb.io/archive/v6/commodities.json"))
 	var commID = -1
 		var name = ""
 		for (var i = 0; i < comms.length; i++) {
