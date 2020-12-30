@@ -1,49 +1,55 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var moment = require("moment");
-const Discord = require("discord.js");
 exports.run = async(client, message, args, level) => {
-	if (!args[0]) {
-		message.channel.send("Incorrect syntax, use ``!helpme systemstatus`` for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
-		return;
-	}
-
+	var ParallelRequest = require('parallel-http-request');
+	var config = {
+    response: "simple"    // [optional] detail|simple|unirest, if empty then the response output is simple
+};
+	var request = new ParallelRequest(config);
 	let factionDetail = "";
 	let argu = ""
+	if(args.length == 0){
+		message.channel.send("I require a system! <:lunasweat:728048962766110760>")
+		return
+	}
 		for (var i = 0; i < args.length; i++) {
 			if (i == args.length - 1)
 				argu += args[i];
 			else
 				argu += args[i] + " ";
 		}
-	function httpGet(theUrl) {
-		var xmlHttp = new XMLHttpRequest();
-		xmlHttp.open("GET", theUrl, false); // false for synchronous request
-		xmlHttp.send(null);
-		return xmlHttp.responseText;
-	}
-	function download(system) {
-		let systemLink = system.replace('+', '%2B').replace('&', '%26').replace(/ /g, '+').replace("&", "%26");
-		let uri = `https://elitebgs.app/api/ebgs/v4/systems?name=${systemLink}`;
-		return JSON.parse(httpGet(uri));
+	function download(sys) {
+		let systemLink = sys.replace('+', '%2B').replace('&', '%26').replace(/ /g, '+').replace("&", "%26");
+		let uri = `https://elitebgs.app/api/ebgs/v5/systems?name=${systemLink}`;
+		request.add(uri)
+		//return JSON.parse(httpGet(uri));
 	}
 	function BGS(faction) {
 		let systemLink = faction.replace('+', '%2B').replace('&', '%26').replace(/ /g, '+').replace("&", "%26");
-		let uri = `https://elitebgs.app/api/ebgs/v4/factions?name=${systemLink}`;
-		return JSON.parse(httpGet(uri));
+		let uri = `https://elitebgs.app/api/ebgs/v5/factions?name=${systemLink}`;
+		request.add(uri)
+		//return JSON.parse(httpGet(uri));
 	}
-	var factions = [];
-	var system = download(argu);
-
+	async function SENDIT(request){
+		const output = new Promise((resolve) =>{
+		request.send(resolve)
+	}).then(function(result){
+		return result
+	})
+	return output
+	}
+	download(argu);
+	var system = await SENDIT(request)
+	system= system[0].body
 	if (system["docs"]["0"] == undefined) {
 		message.channel.send("The system name wasn't found. Make sure you are spelling it correctly and that it "
 			 + "is populated!")
 		return;
 	}
 	var eddb_id = system["docs"]["0"]["eddb_id"]
-		var systemName = system["docs"]["0"]["name"];
+	var systemName = system["docs"]["0"]["name"];
 	var testchart = `http://jegin.net/testchart2.php?sysid=${eddb_id}.png`;
-	/*var testchart = `http://jegin.net/testchart2.php?sysid=${eddb_id}.png`;*/
-	//message.channel.send(testchart);
+	var factions = [];
 	for (i = 0; i <= 7; i++) {
 		if (system["docs"]["0"]["factions"][i] != undefined) {
 			factions.push(system["docs"]["0"]["factions"][i]["name_lower"]);
@@ -53,12 +59,18 @@ exports.run = async(client, message, args, level) => {
 	}
 	factions.reverse();
 	var output = "";
-	var loading = "Loading Faction List.";
-	for (i = 0; i < factions.length; i++) {
-		var bgs = BGS(factions[i]);
+	
+	request.clean()
+	for (i = 0; i < factions.length; i++) {	
+		BGS(factions[i]);
+	}
+	var allBGS = await SENDIT(request)
+	var updatedAt
+	for (i = 0; i < allBGS.length; i++) {
+		var bgs = allBGS[i].body
 		let responseFaction = bgs.docs[0];
 		let responseSystem = system.docs[0];
-		let updatedAt = moment(responseSystem.updated_at);
+		updatedAt = moment(responseSystem.updated_at);
 		let systemName = responseSystem.name;
 		let systemState = responseSystem.state;
 		let controlling = responseSystem.controlling_minor_faction;
@@ -104,8 +116,9 @@ exports.run = async(client, message, args, level) => {
 			})
 		}
 		factionDetail += `  Recovering States :: ${recoveringStates}\n`;
-		factionDetail += `  Last Updated :: ${updatedAt.fromNow()}\n`;
+		
 	}
+	factionDetail += `\nLast Updated :: ${updatedAt.fromNow()}`;
 	function go() {
 		message.channel.send(factionDetail, {
 			code: "asciidoc"
@@ -113,27 +126,17 @@ exports.run = async(client, message, args, level) => {
 	}
 	var timeMax = Date.now();
 	var timeMin = timeMax - (15 * 24 * 60 * 60 * 1000)
-		var systemName = systemName.replace('+', '%2B').replace(' ', '+');
-	//const embed = {
-	//      "color": 15866827,
-	//      "image": {
-	//          "url": `https://elitebgs.app/chartgenerator/systems/influence?name=${systemName}&timemin=${timeMin}&timemax=${timeMax}&theme=dark`
-	//      }
-	//};
-	//message.channel.send({ embed });
-
-	//setTimeout(go, 1000);
-	//message.channel.send();
+	var systemName = systemName.replace('+', '%2B').replace(' ', '+');
 	message.channel.send({
 			files: [{
                 attachment: testchart,
                 name: 'file.png'
 				}]
 		}).then(function () {
-		setTimeout(go, 500);
+		go()
 	});
 
-}
+};
 
 exports.conf = {
 	enabled: true,

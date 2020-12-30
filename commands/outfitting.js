@@ -1,16 +1,11 @@
-
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var moment = require("moment");
-const Discord = require("discord.js");
 exports.run = async(client, message, args, level) => {
-	if (!args[0]) {
-		message.channel.send("Incorrect syntax, use ``!helpme influence`` for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
-		return;
-	}
 	var ParallelRequest = require('parallel-http-request');
 	var config = {
     response: "simple"    // [optional] detail|simple|unirest, if empty then the response output is simple
 };
-	var request = new ParallelRequest(config)
+	var request = new ParallelRequest(config);
 	let factionDetail = "";
 	let argu = ""
 		for (var i = 0; i < args.length; i++) {
@@ -19,10 +14,10 @@ exports.run = async(client, message, args, level) => {
 			else
 				argu += args[i] + " ";
 		}
-	
+	var start = Date.now()
 	function download(sys) {
 		let systemLink = sys.replace('+', '%2B').replace('&', '%26').replace(/ /g, '+').replace("&", "%26");
-		let uri = `https://elitebgs.app/api/ebgs/v5/systems?name=${systemLink}`;
+		let uri = `https://www.edsm.net/api-system-v1/stations?systemName=${systemLink}`;
 		request.add(uri)
 		//return JSON.parse(httpGet(uri));
 	}
@@ -32,6 +27,13 @@ exports.run = async(client, message, args, level) => {
 		request.add(uri)
 		//return JSON.parse(httpGet(uri));
 	}
+	function shipyard(station) {
+		//let systemLink = station.replace('+', '%2B').replace('&', '%26').replace(/ /g, '+').replace("&", "%26");
+		let uri = `https://www.edsm.net/api-system-v1/stations/shipyard?marketId=${station}`;
+		request.add(uri)
+		//return JSON.parse(httpGet(uri));
+	}
+	
 	async function SENDIT(request){
 		const output = new Promise((resolve) =>{
 		request.send(resolve)
@@ -49,55 +51,68 @@ exports.run = async(client, message, args, level) => {
 			return;
 		}
 	var factions = [];
-	var influence = [];
 	for (var i = 0; i <= factionSystems["docs"]["0"]["faction_presence"].length - 1; i++) {
 		if (factionSystems["docs"]["0"]["faction_presence"][i] != undefined) {
 			factions.push(factionSystems["docs"]["0"]["faction_presence"][i]["system_name"]);
-			influence.push(factionSystems["docs"]["0"]["faction_presence"][i]["influence"]);
 		} else {
 			break;
 		}
 	}
-	var Header = "== Total Population Influence ==\nFaction :: " + argu + "\nSystems in :: " + factions.length + "\n";
-	//var popAndInf = "";
-	var str = 0;
 	request.clean()
 	for (var i = 0; i < factions.length; i++) {
 		download(factions[i])
-		}
-	var sys = await SENDIT(request)
-	for (var i = 0; i < sys.length; i++) {
-		systems = sys[i].body
-		var pop = systems["docs"]["0"]["population"];
-		var infpop = pop * influence[i];
-		infpop = Math.round(infpop)
-		str += infpop
-			//popAndInf += factions[i] + ", Pop : " + pop + ", INF : " + (influence[i] * 100) + "\nSystem Influenced : " + infpop + "\n"
+	}
 	
+	var systemStations = await SENDIT(request)
+	
+	request.clean()
+	var stationIDs = [128666762]
+	for (var i = 0; i < systemStations.length; i++) {
+		for(var j = 0; j < systemStations[i].body.stations.length; j++){
+			if(systemStations[i].body.stations[j].type != "Fleet Carrier"){
+				stationIDs.push(systemStations[i].body.stations[j].marketId)
+			}
+		}
 	}
-		
-	const numberWithCommas = (x) => {
-		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	
+	request.clean()
+	for (var i = 0; i < stationIDs.length; i++) {
+		shipyard(stationIDs[i])
 	}
-	str = numberWithCommas(str);
-	Header += "People Under " + argu + "'s Flag :: " + str;
-	message.channel.send(Header, {
-		code: "asciidoc"
-	})
-	//message.channel.send(popAndInf, {code: "asciidoc"})
-	//message.channel.send(Footer, {code: "asciidoc"})
+	var shipyard = await SENDIT(request)
+	var shinrataShips = {}
+	for (var i = 0; i < shipyard.length; i++) {
+		if(i == 0){ //shinra shipyard 
+			for(var j = 0; j < shipyard[i].body.ships.length; j++){
+				shinrataShips[shipyard[i].body.ships[j].name] = 0
+			}
+		}
+		else{
+			if (shipyard[i].body.ships != null){
+				for(var j = 0; j < shipyard[i].body.ships.length; j++){
+					shinrataShips[shipyard[i].body.ships[j].name] += 1
+				}
+			}
+		}
+	}
+	
+	for(var i = 0; i < shinrataShips.length; i++){
+		console.log(shinrataShips)
+	}
+	var end = Date.now() - start
+	console.log(`Time taken: ${end} miliseconds seconds`)
+};
 
-}
 exports.conf = {
 	enabled: true,
 	guildOnly: true,
-	aliases: ["inf"],
-	permLevel: "User"
+	aliases: ["out"],
+	permLevel: "Bot Owner"
 };
 
 exports.help = {
-	name: "influence",
-	category: "Background Simulation",
-	description: "Gives you the total population influence of a faction",
-	usage: "inf <faction>"
+	name: "outfitting",
+	category: "Custom Commands",
+	description: "Outfitting and Shipyard information for Alchemy Den",
+	usage: "outfitting <system(optional)>"
 };

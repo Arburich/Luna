@@ -93,8 +93,8 @@ exports.run = async(client, message, args) => {
 		}
 	}
 	else{	
-		let memberID = message.mentions.members.first().id;
-		let member = message.mentions.members.first();
+		var memberID = message.mentions.members.first().id;
+		var member = message.mentions.members.first();
 		money.updateBal(memberID, args[1]).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
 			message.channel.send(`${member.toString()} got ${args[1]} Lunabits.\n**New Balance:** ${i.money} Lunabits\n` + "**Lifetime Collected**: " + i.totalbits + " Lunabits\n" + `**Prestiges:** ${i.prestige}`);
 			if (i.totalbits > 99 && i.totalbits < 200 && !member.roles.cache.has("486585462379773961")) {
