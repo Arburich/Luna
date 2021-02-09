@@ -30,6 +30,10 @@ const fs = require('fs')
 		message.channel.send("Must give a valid URL.")
 		return;
 	}
+	if(cmd[0].includes("channels")){
+		message.channel.send("Needs to be an image link, not a discord message link. \"Copy Link\", not \"Copy Message Link\" <:lunao7:728048963000729681>")
+		return
+	}
 
 	//let filePath = "/wamp64/www/nynd.html";
 	//let newFile = fs.readFileSync(filePath);
@@ -41,7 +45,7 @@ const fs = require('fs')
 			if (data[l].toString() == "<!--GALLERYISHERE-->") {
 				//message.channel.send("hello")
 				output += "<img class=\"lozad\" data-src=\"" + cmd[0] + " \"><p>" + cmd[1] + ", by " + message.author.username + "</p>" + "\n"
-				message.channel.send("Successfully added the image to the gallery on the website! :purple_heart:")
+				message.channel.send("Successfully added the image to the gallery on the website! <:lunao7:728048963000729681>")
 			}
 			output += data[l].toString() + "\n"
 		}
@@ -54,7 +58,7 @@ exports.conf = {
 	enabled: true,
 	guildOnly: true,
 	aliases: [],
-	permLevel: "Moderator"
+	permLevel: "User"
 };
 
 exports.help = {

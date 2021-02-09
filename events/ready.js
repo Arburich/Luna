@@ -7,4 +7,5 @@ module.exports = async client => {
 		type: "PLAYING"
 	});
 	//${client.config.defaultSettings.prefix}helpme
+	require("../modules/lookout.js")(client);
 };

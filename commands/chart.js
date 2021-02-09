@@ -56,6 +56,7 @@ exports.run = async(client, message, args, level) => {
 	} else {
 		var time = parseInt(argu[1])
 			var testchart = `https://jegin.net/testchart2.php?_jpg_csimd=1&sysid=${eddb_id}&ts=${time}&t=1.png`;
+			console.log(testchart)
 		let responseSystem = system.docs[0];
 		let updatedAt = moment(responseSystem.updated_at);
 		var output = "";

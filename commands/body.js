@@ -205,10 +205,11 @@ exports.run = async(client, message, args, level) => {
 		for (var i = 0; i < bodies["bodies"].length; i++){
 		if (bodies["bodies"][i]["name"].toLowerCase() == planet){
 			if (bodies["bodies"][i]["type"] == "Star"){
+				let randomColor = "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); });
 				const embed = {
   "title": `${bodies["bodies"][i]["type"]} - ${bodies["bodies"][i]["subType"]}`,
   "description": `Distance to Arrival: ${bodies["bodies"][i]["distanceToArrival"]} ls\nMain Star: ${bodies["bodies"][i]["isMainStar"]}\nScoopable: ${bodies["bodies"][i]["isScoopable"]}\nAge: ${bodies["bodies"][i]["age"]} million years\nSpectral Class: ${bodies["bodies"][i]["spectralClass"]}\nLuminosity: ${bodies["bodies"][i]["luminosity"]}\nAbsolute Magnitude: ${bodies["bodies"][i]["absoluteMagnitude"]}\nSolar Masses: ${bodies["bodies"][i]["solarMasses"]}\nSolar Radius: ${bodies["bodies"][i]["solarRadius"]}\nSurface Temp: ${bodies["bodies"][i]["surfaceTemperature"]} K`,
-  "color": 13850502,
+  "color": randomColor,
   "thumbnail": {
     "url": `https://www.edsm.net/img/bodies/stars/${types[`${bodies[`bodies`][i][`subType`]}`]}.png`
   },

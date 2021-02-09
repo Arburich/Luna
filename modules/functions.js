@@ -99,7 +99,7 @@ module.exports = (client) => {
 	client.loadCommand = (commandName) => {
 		try {
 			const props = require(`../commands/${commandName}`);
-			client.logger.log(`Loading Command: ${props.help.name}. 👌`);
+			client.logger.log(`Loading Command: ${props.help.name}. o7`);
 			if (props.init) {
 				props.init(client);
 			}

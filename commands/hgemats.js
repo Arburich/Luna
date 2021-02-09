@@ -159,8 +159,18 @@ exports.run = async(client, message, args, level) => {
 	for (let i = 0; i < Math.min(20, systemCandidates.length); i++) {
 		output += `\n${systemCandidates[i].distance.toString().padStart(6, " ")}Ly :: ${systemCandidates[i].name}`;
 	}
-
-	return message.channel.send(output, {
+	var listedOut = ""
+	var count = 0
+	for (var i = 0; i < output.length; i++){
+		listedOut += output
+		if(i % 2000 == 0){
+			message.channel.send(listedOut, {
+		code: "asciidoc"
+	});
+			listedOut = ""
+		}
+	}
+	return message.channel.send(listedOut, {
 		code: "asciidoc"
 	});
 }
