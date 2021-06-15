@@ -18,7 +18,21 @@ exports.run = async(client, message, args) => {
 				argu += args[i] + " ";
 		}
 	
-	
+	function leaderboardWrite(member, amount){
+			var fs = require("fs")
+			var leaderboard = JSON.parse(fs.readFileSync(__dirname + "/../commandStorage/leaderboard.json", "utf8"));
+			if(member.user.username in leaderboard){
+				leaderboard[member.user.username] += parseInt(amount)
+			}
+			else{
+				leaderboard[member.user.username] = parseInt(amount)
+			}
+			console.log(member.user.username)
+			fs.writeFile(__dirname + "/../commandStorage/leaderboard.json", JSON.stringify(leaderboard), function(err, result) {
+     if(err) console.log('error', err);
+   });
+		
+	}
 	
 	
 	function addRole(role) {
@@ -64,6 +78,7 @@ exports.run = async(client, message, args) => {
 			await sleep(2000)
 			await money.updateBal(member.id, amount).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
 			message.channel.send(`${member.toString()} got ${amount} Lunabits.\n**New Balance:** ${i.money} Lunabits\n` + "**Lifetime Collected**: " + i.totalbits + " Lunabits\n" + `**Prestiges:** ${i.prestige}`);
+			leaderboardWrite(member,amount)
 			if (i.totalbits > 99 && i.totalbits < 200 && !member.roles.cache.has("486585462379773961")) {
 				message.channel.send(member.toString() + ", you are promoted to Rank 1: Follower! https://www.youtube.com/watch?v=sSxx12vADYk")
 				addRole("486585462379773961")
@@ -88,6 +103,7 @@ exports.run = async(client, message, args) => {
 				message.channel.send(member.toString() + ", you are promoted to Rank 6: Commander! https://www.youtube.com/watch?v=sSxx12vADYk")
 				addRole("486594265242140673")
 			}
+		
 			return;
 		})
 		}
@@ -97,6 +113,7 @@ exports.run = async(client, message, args) => {
 		var member = message.mentions.members.first();
 		money.updateBal(memberID, args[1]).then((i) => { // money.updateBal grabs the (userID, value) value being how much you want to add, and puts it into 'i'.
 			message.channel.send(`${member.toString()} got ${args[1]} Lunabits.\n**New Balance:** ${i.money} Lunabits\n` + "**Lifetime Collected**: " + i.totalbits + " Lunabits\n" + `**Prestiges:** ${i.prestige}`);
+			leaderboardWrite(member,args[1])
 			if (i.totalbits > 99 && i.totalbits < 200 && !member.roles.cache.has("486585462379773961")) {
 				message.channel.send(member.toString() + ", you are promoted to Rank 1: Follower! https://www.youtube.com/watch?v=sSxx12vADYk")
 				addRole("486585462379773961")
@@ -121,6 +138,7 @@ exports.run = async(client, message, args) => {
 				message.channel.send(member.toString() + ", you are promoted to Rank 6: Commander! https://www.youtube.com/watch?v=sSxx12vADYk")
 				addRole("486594265242140673")
 			}
+			
 			return;
 		})
 	}

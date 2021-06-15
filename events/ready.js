@@ -1,4 +1,9 @@
 module.exports = async client => {
+	
+	require("../modules/lookout.js")(client);
+	client.logger.log( 'STARTING BGS LOOKOUT o7')
+	require("../modules/tick.js")(client);
+	client.logger.log( 'STARTING TICK LOOKOUT o7')
 	// Log that the bot is online.
 	client.logger.log(`[READY] ${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`, "ready");
 
@@ -7,5 +12,5 @@ module.exports = async client => {
 		type: "PLAYING"
 	});
 	//${client.config.defaultSettings.prefix}helpme
-	require("../modules/lookout.js")(client);
+	
 };

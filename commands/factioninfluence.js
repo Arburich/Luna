@@ -22,12 +22,12 @@ exports.run = async(client, message, args) => {
 	function BGS(faction) {
 		let systemLink = faction.replace('+', '%2B').replace(/ /g, '+').replace("&", "%26");
 
-		let uri = `https://elitebgs.app/api/ebgs/v4/factions?name=${systemLink}`;
+		let uri = `https://elitebgs.app/api/ebgs/v5/factions?name=${systemLink}`;
 		return JSON.parse(httpGet(uri));
 	}
 
 	// add a call to find out when the tick last happened
-	var tickJSON = JSON.parse(httpGet(`https://elitebgs.app/api/ebgs/v4/ticks`));
+	var tickJSON = JSON.parse(httpGet(`https://elitebgs.app/api/ebgs/v5/ticks`));
 	// should this be .time or .updated_at ? EliteBGS API not clear
 	var tickHappenedWhen = moment(tickJSON[0]["time"]);
 	var faction = BGS(argu)
