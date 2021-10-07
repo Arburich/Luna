@@ -23,13 +23,12 @@ exports.run = async(client, message, args, level) => {
 		return xmlHttp.responseText;
 	}
 	function download(system) {
-		let systemLink = system.replace('+', '%2B').replace('&', '%26').replace(/ /g, '+').replace("&", "%26");
-		let uri = `https://elitebgs.app/api/ebgs/v5/systems?name=${systemLink}`;
+		let uri = `https://elitebgs.app/api/ebgs/v5/systems?name=${encodeURI(system)}`;
 		return JSON.parse(httpGet(uri));
 	}
 	function BGS(faction) {
 		let systemLink = faction.replace('+', '%2B').replace('&', '%26').replace(/ /g, '+').replace("&", "%26");
-		let uri = `https://elitebgs.app/api/ebgs/v5/factions?name=${systemLink}`;
+		let uri = `https://elitebgs.app/api/ebgs/v5/factions?name=${encodeURI(system)}`;
 		return JSON.parse(httpGet(uri));
 	}
 	var factions = [];

@@ -15,9 +15,7 @@ Privateer
 Patches
 Scientist
 Movie Night
-Minecraft
-Destiny
-Fireteams
+Minecraft
 Wings
 NYND
 SRV
@@ -25,3 +23,5 @@ Fight Night
 Hull Seal
 Carrier Miner
 WAR GAMES
+Other Games
+Haunted Tour

@@ -23,16 +23,11 @@ exports.run = async(client, message, args, level) => {
 		return xmlHttp.responseText;
 	}
 	function bubble(system, size) {
-		const systemLink = system
-			.replace("+", "%2B")
-			.replace("&", "%26")
-			.replace(/ /g, "+");
-		const uri = `https://www.edsm.net/api-v1/cube-systems?systemName=${systemLink}&size=${size * 2}`;
+		const uri = `https://www.edsm.net/api-v1/cube-systems?systemName=${encodeURI(system)}&size=${size * 2}`;
 		return JSON.parse(httpGet(uri));
 	}
 	function system(system) {
-		let systemLink = system.replace('+', '%2B').replace('&', '%26').replace(/ /g, '+');
-		let uri = `https://www.edsm.net/api-system-v1/factions?systemName=${systemLink}`;
+		let uri = `https://www.edsm.net/api-system-v1/factions?systemName=${encodeURI(system)}`;
 		return JSON.parse(httpGet(uri));
 	}
 

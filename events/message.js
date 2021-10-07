@@ -25,6 +25,14 @@ module.exports = (client, message) => {
 		if (message.attachments.size > 0) {
 			message.react(`💙`)
 		}
+    
+	}
+//if (message.author.id == "353576939971411969"){
+	//message.channel.send("Monster.", { files: ["./betray.mp3"] });
+//}
+
+	if (message.content.toLowerCase().includes("<@&637413476859510787>")){
+		message.channel.send("https://gfycat.com/appropriateinsistentgalah")
 	}
 	if (message.channel.type === "dm") {
 		client.channels.cache.get('466269232368320552').send("Hey <@223604997206573056>, " + message.author.toString()  + " sent me this in my PM's:\n" + message.content)

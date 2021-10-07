@@ -34,7 +34,7 @@ exports.run = async (client, message, args, level) => {
 		.addField("Status", `${status[member.user.presence.status]}`, true)
 		.addField("Playing", `${member.user.presence.game ? `${member.user.presence.game.name}` : "Not playing anything."}`, true)
 		.addField("Roles", `${member.roles.cache.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).join(" **|** ") || "No Roles"}`, true)
-		.addField("Joined", `${moment().diff(moment.utc(member.joinedAt), 'days')} Days Ago (Created ${moment.utc(member.user.createdAt).format("MMMM Do YYYY")})`, true)
+		.addField("Joined", `${moment().diff(moment.utc(member.joinedAt), 'days')} Days Ago (Created ${moment.utc(member.user.createdAt).format("HH:mm, MMMM Do YYYY")}, it is now ${moment.utc().format("HH:mm, MMMM Do YYYY")}`, true)
 
 	message.channel.send({embed});
 }

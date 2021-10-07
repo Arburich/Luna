@@ -148,7 +148,7 @@ exports.conf = {
 	enabled: true,
 	guildOnly: true,
 	aliases: ["r"],
-	permLevel: "Moderator"
+	permLevel: "Regular"
 };
 
 exports.help = {
