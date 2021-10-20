@@ -1,5 +1,6 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var moment = require("moment");
+const { codeBlock } = require("@discordjs/builders");
 
 exports.run = async(client, message, args, level) => { // eslint-disable-line no-unused-vars
 
@@ -52,9 +53,7 @@ exports.run = async(client, message, args, level) => { // eslint-disable-line no
 	bigOleMessage += `When               :: ${place.date}\n`;
 	bigOleMessage += `In Ship            :: ${place.shipType}\n`;
 	bigOleMessage += `Distance from Home :: ${x}ly`;
-	message.channel.send(bigOleMessage, {
-		code: "asciidoc"
-	});
+	message.channel.send(codeBlock("asciidoc", bigOleMessage));
 };
 
 exports.conf = {

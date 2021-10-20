@@ -1,3 +1,5 @@
+const { codeBlock } = require("@discordjs/builders");
+
 exports.run = async(client, message, args, level) => { // eslint-disable-line no-unused-vars
 	var items = require(__dirname + '/../commandStorage/itemsJSON.json');
 	if (!args[0]) {
@@ -18,9 +20,7 @@ exports.run = async(client, message, args, level) => { // eslint-disable-line no
 		} else {
 			output += `\nNotes :: N/A`
 		}
-		message.channel.send(output, {
-			code: "asciidoc"
-		});
+		message.channel.send(codeBlock("asciidoc", output));
 };
 
 exports.conf = {

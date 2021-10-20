@@ -1,4 +1,5 @@
 var moment = require("moment");
+const { codeBlock } = require("@discordjs/builders");
 exports.run = async(client, message, args, level) => {
 	output = "# The Alchemy Calendar #"
 		output += "\nGalactic Standard Time :: < " + moment().utcOffset('+0000').format("HH:mm:ss, MMMM Do, ") + (Number(moment().format("YYYY")) + 1286).toString() + " >"
@@ -53,9 +54,7 @@ exports.run = async(client, message, args, level) => {
 		 + "each Oct filling with 81 cycles. The 12th Oct contains only 78 cycles to account for closer approximation to the time."
 		 + "\n> The Current 59 Virginis Year is based on the year of 59 Virginis's Discovery by Tycho Brahe in the Earth Year of 1598. "
 		 + "\n> Alchemy Den was founded in 59 Virginis on the 50th cycle of Oct 1, 643, at 09:30:00 by the Pioneer, and Creator of this Calender, Arburich."
-		message.channel.send(output, {
-			code: "md"
-		})
+		message.channel.send(codeBlock("md", output));
 };
 
 exports.conf = {

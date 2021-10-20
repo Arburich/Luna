@@ -1,4 +1,6 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const { codeBlock } = require("@discordjs/builders");
+
 exports.run = async(client, message, args, level) => {
 	let argu = ""
 		for (var i = 0; i < args.length; i++) {
@@ -31,13 +33,11 @@ exports.run = async(client, message, args, level) => {
 	const timeMinComma = numberWithCommas(timeMin);
 	const lyComma = numberWithCommas(data[0]);
 	const rebuyComma = numberWithCommas(data[1]);
-	message.channel.send("== Ship Transfer Time and Cost ==" +
+	message.channel.send(codeBlock("asciidoc", "== Ship Transfer Time and Cost ==" +
 		"\nLight Years:: " + lyComma +
 		"\nRebuy Cost :: " + rebuyComma +
 		"\nCost       :: " + costComma +
-		"\nTime(min)  :: " + timeMinComma + " minutes", {
-		code: "asciidoc"
-	});
+		"\nTime(min)  :: " + timeMinComma + " minutes"));
 
 };
 

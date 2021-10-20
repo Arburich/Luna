@@ -1,6 +1,7 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var moment = require("moment");
 const Discord = require("discord.js");
+const { codeBlock } = require("@discordjs/builders");
 exports.run = async(client, message, args) => {
 	if (!args[0]) {
 		message.channel.send("Incorrect syntax, use ``!helpme factionstatus`` for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
@@ -48,16 +49,12 @@ exports.run = async(client, message, args) => {
 
 			// this should probably be a larger number now. Not sure how big. 10?
 			if ((i % 4) == 0 && (i > 1)) {
-				message.channel.send(output, {
-					code: "asciidoc"
-				})
+				message.channel.send(codeBlock("asciidoc", output));
 				output = ""
 			}
 
 		}
-		message.channel.send(output, {
-			code: "asciidoc"
-		})
+		message.channel.send(codeBlock("asciidoc", output));
 
 };
 

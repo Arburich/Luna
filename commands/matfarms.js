@@ -1,3 +1,5 @@
+const { codeBlock } = require("@discordjs/builders");
+
 exports.run = async(client, message, args, level) => {
 	var stuff = "== Engineering Materials farming locations ==\n\n== Manufactured == \n-Dav's hope- (210.50 ly from home)"
 		 + "\nSystem :: Hyades Sector DR-V c2-23"
@@ -20,9 +22,8 @@ exports.run = async(client, message, args, level) => {
 		 + "\nPlanet :: 1 B Coordinates :: -54.3, -50.4"
 		 + "\nClosest Trader :: Diaguandri, Ray Gateway";
 
-	message.channel.send(stuff, {
-		code: "asciidoc"
-	})
+	
+    message.channel.send(codeBlock("asciidoc", stuff));
 };
 
 exports.conf = {

@@ -1,5 +1,6 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var moment = require("moment");
+const { codeBlock } = require("@discordjs/builders");
 exports.run = async(client, message, args, level) => {
 	var ParallelRequest = require('parallel-http-request');
 	var config = {
@@ -120,9 +121,7 @@ exports.run = async(client, message, args, level) => {
 	}
 	factionDetail += `\nLast Updated :: ${updatedAt.fromNow()}`;
 	function go() {
-		message.channel.send(factionDetail, {
-			code: "asciidoc"
-		});
+		message.channel.send(codeBlock("asciidoc", factionDetail));
 	}
 	var timeMax = Date.now();
 	var timeMin = timeMax - (15 * 24 * 60 * 60 * 1000)

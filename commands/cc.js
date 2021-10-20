@@ -1,3 +1,5 @@
+const { codeBlock } = require("@discordjs/builders");
+
 exports.run = async(client, message, args, level) => {
 	var fs = require("fs")
 		if (!args[0]) {
@@ -7,9 +9,8 @@ exports.run = async(client, message, args, level) => {
 				for (var i = 0; i < commands.length; i++) {
 					out += commands[i] + "\n"
 				}
-				message.channel.send("== Custom Commands for Alchemy Den ==\n" + out, {
-					code: "asciidoc"
-				})
+				message.channel.send(codeBlock("asciidoc", "== Custom Commands for Alchemy Den ==\n" + out));
+				
 				return
 		}
 		if (args[0] == "create") {
@@ -50,9 +51,8 @@ exports.run = async(client, message, args, level) => {
 				for (var i = 0; i < commands.length; i++) {
 					out += commands[i] + "\n"
 				}
-				message.channel.send("== Custom Commands for Alchemy Den ==\n" + out, {
-					code: "asciidoc"
-				})
+				message.channel.send(codeBlock("asciidoc", "== Custom Commands for Alchemy Den ==\n" + out));
+				
 				return
 		}
 

@@ -28,7 +28,7 @@
     "chalk": "^4.1.2",
     "discord-money": "^0.2.0",
     "discord-player": "^5.1.0-dev.1634688804.a0badb8",
-    "discord.js": "^12.5.3",
+    "discord.js": "^13.2.0",
     "enmap": "^5.8.7",
     "express": "^4.17.1",
     "ffmpeg-static": "^4.4.0",

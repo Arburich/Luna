@@ -4,6 +4,7 @@ Find the nearest system with specified High Grade Emissions drop
 
 // module requires
 const https = require("https");
+const { codeBlock } = require("@discordjs/builders");
 
 exports.run = async(client, message, args, level) => {
 	// list all possible HGE drops
@@ -70,9 +71,7 @@ exports.run = async(client, message, args, level) => {
 				`Allegiance :: ${mat.allegiance}\n` + 
 `State      :: ${mat.state == "War" ? "War or Civil war" : mat.state}\n`);
 		}
-		return message.channel.send(output, {
-			code: "asciidoc"
-		});
+		return message.channel.send(codeBlock("asciidoc", output));
 	}
 
 	// do a quick check for material and refSystem if they contain tags
@@ -164,15 +163,11 @@ exports.run = async(client, message, args, level) => {
 	for (var i = 0; i < output.length; i++){
 		listedOut += output
 		if(i % 2000 == 0){
-			message.channel.send(listedOut, {
-		code: "asciidoc"
-	});
+			message.channel.send(codeBlock("asciidoc", listedOut));
 			listedOut = ""
 		}
 	}
-	return message.channel.send(listedOut, {
-		code: "asciidoc"
-	});
+	return message.channel.send(codeBlock("asciidoc", listedOut));
 }
 
 async function getSystems(refSystem, radius) {

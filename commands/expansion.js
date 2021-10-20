@@ -1,6 +1,8 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var moment = require("moment");
 const Discord = require("discord.js");
+const { codeBlock } = require("@discordjs/builders");
+
 exports.run = async(client, message, args, level) => {
 	let argu = "";
 	for (var i = 0; i < args.length; i++) {
@@ -74,12 +76,8 @@ exports.run = async(client, message, args, level) => {
 		for (let u = 0; u < pending.length; u++) {
 			pendingOut += pending[u][0] + " :: " + pending[u][1] + " - " + pending[u][2] + " // Last Updated " + pending[u][3] + "\n"
 		}
-		msgActive.edit(activeOut, {
-			code: "asciidoc"
-		})
-		msgPending.edit(pendingOut, {
-			code: "asciidoc"
-		})
+		msgActive.edit(codeBlock("asciidoc", activeOut));
+		msgActive.edit(codeBlock("asciidoc", pendingOut));
 		//message.channel.send("== Pending Expansions ==\n"+ pending,{code :"asciidoc"})
 };
 

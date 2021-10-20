@@ -1,3 +1,5 @@
+const { codeBlock } = require("@discordjs/builders");
+
 exports.run = async(client, message, args, level) => {
 	//load cards
 	var fs = require("fs")
@@ -8,9 +10,8 @@ exports.run = async(client, message, args, level) => {
 		for([key, val] of Object.entries(cards)) {
 			output += `${key} :: ${val}\n` 
 		}
-        message.channel.send(output, {
-			code: "asciidoc"
-		});
+		message.channel.send(codeBlock("asciidoc", output));
+   
 	}
 	else if(args[0].toLowerCase() == "open"){
 		//take the rest of args, make new card addition with description. 

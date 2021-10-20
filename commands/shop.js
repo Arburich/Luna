@@ -1,10 +1,11 @@
 const money = require(__dirname + '/../commandStorage/discord-muns.js');
+const { codeBlock } = require("@discordjs/builders");
 exports.run = async(client, message, args) => {
 	if (!args) {
 		message.channel.send("Incorrect syntax. Use !helpme shop for correct usage. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧");
 	}
 	if (args[0] === "list") {
-		message.channel.send(`= Shop Items! (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ =
+		message.channel.send(codeBlock("asciidoc", `= Shop Items! (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ =
 
 • 1.) Server Emoji Slot :: 50 Lunabits 
     > The buyer can buy an emoji slot. Needs to fit 500x500px. 
@@ -20,9 +21,8 @@ exports.run = async(client, message, args) => {
 	> Choose this VERY wisely, as it cannot be undone. This does NOT affect your balance. Only Lifetime total.  
 
 =  Note: All items can be rejected at Moderator discretion.  =
-= If you have suggestions for more items, let Arburich know! =`, {
-			code: "asciidoc"
-		});
+= If you have suggestions for more items, let Arburich know! =`));
+		
 		return;
 	} else if ((args[0] === "buy") && (args[1])) {
 		switch (args[1]) {

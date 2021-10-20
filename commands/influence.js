@@ -1,4 +1,4 @@
-
+const { codeBlock } = require("@discordjs/builders");
 var moment = require("moment");
 const Discord = require("discord.js");
 exports.run = async(client, message, args, level) => {
@@ -79,9 +79,8 @@ exports.run = async(client, message, args, level) => {
 	}
 	str = numberWithCommas(str);
 	Header += "People Under " + argu + "'s Flag :: " + str;
-	message.channel.send(Header, {
-		code: "asciidoc"
-	})
+
+	message.channel.send(codeBlock("asciidoc", Header));
 	//message.channel.send(popAndInf, {code: "asciidoc"})
 	//message.channel.send(Footer, {code: "asciidoc"})
 

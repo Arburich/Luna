@@ -1,3 +1,5 @@
+const { codeBlock } = require("@discordjs/builders");
+
 exports.run = async(client, message, args, level) => {
 	var stuff = "== Module Blueprint & Guardian Tech Components Farming =="
 		 + "\nSYNUEFE NL-N C23-4 "
@@ -18,9 +20,7 @@ exports.run = async(client, message, args, level) => {
 		 + "\n\n==  Everything you need minus the fighters =="
 		 + "\n:: https://i.imgur.com/8cAaVXLh.png";
 
-	message.channel.send(stuff, {
-		code: "asciidoc"
-	})
+	message.channel.send(codeBlock("asciidoc", stuff));
 };
 
 exports.conf = {

@@ -5,7 +5,8 @@ command is also filtered by level, so if a user does not have access to
 a command, it is not shown to them. If a command name is given with the
 help command, its extended help is shown.
  */
-
+const { codeBlock } = require("@discordjs/builders");
+//message.channel.send(codeBlock("asciidoc", output));
 exports.run = (client, message, args, level) => {
 	// If no specific command is called, show all filtered commands.
 	if (!args[0]) {
@@ -26,14 +27,13 @@ exports.run = (client, message, args, level) => {
 				output += `\u200b\n== ${cat} ==\n`;
 				currentCategory = cat;
 			}
+			if(output.length > 1000){
+				message.channel.send(codeBlock("asciidoc", output));
+			output = ""
+			}
 			output += `${message.settings.prefix}${c.help.name}${" ".repeat(longest - c.help.name.length)} :: ${c.help.description}\n`;
 		});
-		message.channel.send(output, {
-			code: "asciidoc",
-			split: {
-				char: "\u200b"
-			}
-		});
+		 message.channel.send(codeBlock("asciidoc", output));
 	} else {
 		// Show individual command's help.
 		let command = args[0];
@@ -41,9 +41,8 @@ exports.run = (client, message, args, level) => {
 			command = client.commands.get(command);
 			if (level < client.levelCache[command.conf.permLevel])
 				return;
-			message.channel.send(`= ${command.help.name} = \n${command.help.description}\nusage:: ${command.help.usage}\naliases:: ${command.conf.aliases.join(", ")}\n= ${command.help.name} =`, {
-				code: "asciidoc"
-			});
+			
+			 message.channel.send(codeBlock("asciidoc",`= ${command.help.name} = \n${command.help.description}\nusage:: ${command.help.usage}\naliases:: ${command.conf.aliases.join(", ")}\n= ${command.help.name} =`));
 		}
 	}
 };
