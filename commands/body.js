@@ -2,7 +2,6 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var moment = require("moment");
 const Discord = require("discord.js");
 const mergeImages = require('merge-images');
-const { Canvas, Image } = require('canvas');
 const { MessageAttachment } = require('discord.js');
 exports.run = async(client, message, args, level) => {
 	if (!args[0]) {

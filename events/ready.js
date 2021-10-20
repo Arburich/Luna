@@ -11,6 +11,12 @@ module.exports = async client => {
 	client.user.setActivity(`${client.config.defaultSettings.prefix}helpme`, {
 		type: "PLAYING"
 	});
+	//client.channels.cache.get("899396269359894569").messages.fetch("899397177103765575").then(m => {
+        //console.log("Cached reaction message.");
+    //}).catch(e => {
+    //console.error("Error loading message.");
+    //console.error(e);
+    //});
 	//${client.config.defaultSettings.prefix}helpme
 	
 };

@@ -24,7 +24,7 @@ exports.run = async(client, message, args, level) => {
 	}
 	msg.edit("Finding Stars in Space...");
 	function download(system) {
-		let uri = `https://www.edsm.net/api-v1/system?sysname=${encodeURI(system)}&coords=1`;
+		let uri = `https://www.edsm.net/api-v1/system?sysname=${encodeURI(system.trim())}&coords=1`;
 
 		if (httpGet(uri).length <= 2 && systems[0] == system) {
 			msg.edit("No information on EDSM for ``" + systems[0] + "``");

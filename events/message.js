@@ -102,6 +102,11 @@ module.exports = (client, message) => {
 			return;
 		}
 	}
+	 if (cmd && cmd.voiceChannel) {
+        if (!message.member.voice.channel) return message.channel.send(`You're not in a voice channel ${message.author}... try again ? ❌`);
+
+        if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`You are not in the same voice channel ${message.author}... try again ? ❌`);
+    }
 
 	// To simplify message arguments, the author's level is now put on level (not member so it is supported in DMs)
 	// The "level" command module argument will be deprecated in the future.

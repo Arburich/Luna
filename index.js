@@ -8,6 +8,8 @@ if (process.version.slice(1).split(".")[0] < 8)
 const Discord = require("discord.js");
 const sql = require('sqlite3');
 const money = require('discord-money');
+const { Player } = require('discord-player');
+const { Client, Intents } = require('discord.js');
 // We also load the rest of the things we need in this file:
 const {
 	promisify
@@ -19,7 +21,16 @@ const http = require('http');
 // This is your client. Some people call it `bot`, some people call it `self`,
 // some might call it `cootchie`. Either way, when you see `client.something`,
 // or `bot.something`, this is what we're refering to. Your client.
-const client = new Discord.Client();
+
+const client = new Discord.Client({
+    intents: [
+        Intents.FLAGS.GUILDS,
+        Intents.FLAGS.GUILD_MEMBERS,
+        Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.GUILD_VOICE_STATES
+    ],
+    disableMentions: 'everyone',
+});
 
 // Here we load the config file that contains our token and our prefix values.
 client.config = require("./config.js");
@@ -45,7 +56,7 @@ client.settings = new Enmap({
 			//name: "settings"
 		//})
 	});
-
+global.player = new Player(client, client.config.opt.discordPlayer);
 // We're doing real fancy node 8 async/await stuff here, and to do that
 // we need to wrap stuff in an anonymous function. It's annoying but it works.
 
@@ -72,6 +83,34 @@ const init = async() => {
 		const event = require(`./events/${file}`);
 		// This line is awesome by the way. Just sayin'.
 		client.on(eventName, event.bind(null, client));
+		player.on('error', (queue, error) => {
+    console.log(`Error emitted from the queue ${error.message}`);
+});
+
+player.on('connectionError', (queue, error) => {
+    console.log(`Error emitted from the connection ${error.message}`);
+});
+
+player.on('trackStart', (queue, track) => {
+    if (!client.config.opt.loopMessage && queue.repeatMode !== 0) return;
+    queue.metadata.send(`Started playing ${track.title} in **${queue.connection.channel.name}** 🎧`);
+});
+
+player.on('trackAdd', (queue, track) => {
+    queue.metadata.send(`Track ${track.title} added in the queue ✅`);
+});
+
+player.on('botDisconnect', (queue) => {
+    queue.metadata.send('I was manually disconnected from the voice channel, clearing queue... ❌');
+});
+
+player.on('channelEmpty', (queue) => {
+    queue.metadata.send('Nobody is in the voice channel, leaving the voice channel... ❌');
+});
+
+player.on('queueEnd', (queue) => {
+    queue.metadata.send('I finished reading the whole queue ✅');
+});
 		const mod = require.cache[require.resolve(`./events/${file}`)];
 		delete require.cache[require.resolve(`./events/${file}`)];
 		for (let i = 0; i < mod.parent.children.length; i++) {
