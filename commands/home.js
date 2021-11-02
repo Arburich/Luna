@@ -1,5 +1,5 @@
 exports.run = async(client, message, args, level) => {
-	const embed = {
+	const embed1 = {
 		"title": "59 Virginis, Alchemia Virginis, The Tavern",
 		"color": 4751592,
 		"image": {
@@ -24,7 +24,7 @@ exports.run = async(client, message, args, level) => {
 		]
 	};
 	message.channel.send({
-		embed
+		embeds:[embed1]
 	});
 };
 

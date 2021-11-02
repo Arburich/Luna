@@ -46,12 +46,17 @@ exports.run = async(client, message, args, level) => {
 		let responseSystem = system.docs[0];
 		let updatedAt = moment(responseSystem.updated_at);
 		var output = "";
-		message.channel.send("Last updated " + updatedAt.fromNow(), {
-			 files: [{
-                attachment: testchart,
-                name: 'file.png'
-				}]
-		});
+		/*message.channel.send({
+			 files: Array.from(testchart),
+			 content: `Last updated ${updatedAt.fromNow()}`
+		});*/
+		message.channel.send({
+			files: [{
+				attachment: testchart,
+				name: 'chart.png'
+			}],
+			content:`Last updated ${updatedAt.fromNow()}`,
+		})
 	} else {
 		var time = parseInt(argu[1])
 			var testchart = `https://jegin.net/testchart2.php?_jpg_csimd=1&sysid=${eddb_id}&ts=${time}&t=1.png`;
@@ -59,12 +64,13 @@ exports.run = async(client, message, args, level) => {
 		let responseSystem = system.docs[0];
 		let updatedAt = moment(responseSystem.updated_at);
 		var output = "";
-		message.channel.send("Last updated " + updatedAt.fromNow(), {
+		message.channel.send({
 			files: [{
-                attachment: testchart,
-                name: 'file.png'
-				}]
-		});
+				attachment: testchart,
+				name: 'chart.png'
+			}],
+			content:`Last updated ${updatedAt.fromNow()}`,
+		})
 	}
 
 }

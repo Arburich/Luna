@@ -89,7 +89,7 @@ exports.run = async(client, message, args, level) => {
 		})
 		console.log(keyValues[1][0])
 		console.log(corelocations[keyValues[1][0]][0])
-		const embed = {
+		const embed1 = {
 		"title": "Click me for Full Commodity Page",
 		"url": `https://eddb.io/commodity/`,
 		"color": 7864575,
@@ -118,8 +118,9 @@ exports.run = async(client, message, args, level) => {
 			}
 		]
 	};
+	console.log("about to send the embed")
 	message.channel.send({
-		embed
+		embeds:[embed1]
 	});
 
 	//message.channel.send(output,{code :"asciidoc"})

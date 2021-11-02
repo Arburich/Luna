@@ -27,7 +27,8 @@ const client = new Discord.Client({
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MEMBERS,
         Intents.FLAGS.GUILD_MESSAGES,
-        Intents.FLAGS.GUILD_VOICE_STATES
+        Intents.FLAGS.GUILD_VOICE_STATES,
+		Intents.FLAGS.GUILD_MESSAGE_REACTIONS
     ],
     disableMentions: 'everyone',
 });
@@ -42,6 +43,7 @@ client.logger = require("./util/Logger");
 // Let's start by getting some useful functions that we'll use throughout
 // the bot, like logs and elevation features.
 require("./modules/functions.js")(client);
+require("./modules/twitchStuff.js")(client);
 
 // Aliases and commands are put in collections where they can be read from,
 // catalogued, listed, etc.

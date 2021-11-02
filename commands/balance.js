@@ -2,7 +2,7 @@ const money = require(__dirname + '/../commandStorage/discord-muns.js');
 exports.run = async(client, message, args, level) => {
 	if (!args[0]) {
 		money.fetchBal(message.author.id).then((i) => { // money.fetchBal grabs the userID, finds it, and puts it into 'i'.
-			const embed = {
+			const embed1 = {
 				"color": 15866827,
 				"title": "__**Balance**__",
 				"description": "\n**" + i.money + "** Lunabits Available\n**" + i.totalbits + "** Lifetime Collected\n**" + i.prestige + "** Prestiges",
@@ -11,14 +11,14 @@ exports.run = async(client, message, args, level) => {
 				}
 			};
 			message.channel.send({
-				embed
+				embeds:[embed1]
 			});
 
 		})
 	} else {
 		let member = message.mentions.members.first().id;
 		money.fetchBal(member).then((i) => { // money.fetchBal grabs the userID, finds it, and puts it into 'i'.
-			const embed = {
+			const embed1 = {
 				"color": 15866827,
 				"title": "__**Balance of User Mentioned**__",
 				"description": "\n**" + i.money + "** Lunabits Available\n**" + i.totalbits + "** Lifetime Collected\n**" + i.prestige + "** Prestiges",
@@ -27,7 +27,7 @@ exports.run = async(client, message, args, level) => {
 				}
 			};
 			message.channel.send({
-				embed
+				embeds:[embed1]
 			});
 		})
 	}

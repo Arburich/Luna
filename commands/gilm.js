@@ -23,7 +23,7 @@ exports.run = async(client, message, args, level) => {
 		}
 
 		if (out.toLowerCase().includes("fuck") == true) {
-			message.channel.send("Why would you make me say that... <:lunasweat:641711032724750350>")
+			message.channel.send("Why would you make me say that... <:lunasweat:728048962766110760>")
 			return;
 		}
 		message.channel.send(out)

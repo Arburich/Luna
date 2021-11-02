@@ -29,6 +29,7 @@
     "discord-money": "^0.2.0",
     "discord-player": "^5.1.0-dev.1634688804.a0badb8",
     "discord.js": "^13.2.0",
+    "dotenv": "^10.0.0",
     "enmap": "^5.8.7",
     "express": "^4.17.1",
     "ffmpeg-static": "^4.4.0",
@@ -45,8 +46,9 @@
     "parallel-http-request": "^1.1.3",
     "ping": "^0.2.3",
     "pm2": "^4.5.6",
-    "request": "^2.88.0",
+    "request": "^2.88.2",
     "sqlite3": "^5.0.2",
+    "tmi.js": "^1.8.5",
     "xmlhttprequest": "^1.8.0",
     "zeromq": "^6.0.0-beta.6",
     "zlib": "^1.0.5"

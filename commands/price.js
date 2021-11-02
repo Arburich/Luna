@@ -195,7 +195,7 @@ exports.run = async(client, message, args, level) => {
 			}
 		}
 
-		const embed = {
+		const embed1 = {
 		"title": "Click me for EDDB Page",
 		"url": `https://eddb.io/commodity/${commID}`,
 		"color": 7864575,
@@ -224,7 +224,7 @@ exports.run = async(client, message, args, level) => {
 		]
 	};
 	message.channel.send({
-		embed
+		embeds:[embed1]
 	});
 
 	//message.channel.send(output,{code :"asciidoc"})

@@ -17,6 +17,7 @@ module.exports = (client) => {
 	return output
 	}
 	async function ticks (){
+		try{
 		//client.logger.log("Starting Tick Watch")
 		request.add(`https://elitebgs.app/api/ebgs/v5/ticks`)
 		var systemData = await SENDIT(request)
@@ -43,9 +44,11 @@ module.exports = (client) => {
 			client.logger.log("tick detected")
 			hist["tick"] = tickHappenedWhen
 			
-			client.channels.cache.get("468122171709849610").send(ticker)
+			client.channels.cache.get("468122171709849610").send({embeds: [ticker]})
 			fs.writeFileSync(__dirname + "/../commandStorage/ticks.json", JSON.stringify(hist))
 			request.clean()
+		}}catch(e){
+			console.log(e)
 		}
 					
 		

@@ -1,3 +1,5 @@
+const { codeBlock } = require("@discordjs/builders");
+//
 exports.run = async(client, message, args, level) => {
 	var fs = require("fs")
 		var argu = ""
@@ -9,9 +11,7 @@ exports.run = async(client, message, args, level) => {
 		}
 		if (!args[0]) {
 			var rankData = fs.readFileSync("./commandStorage/ranks.txt", "utf8")
-				message.channel.send("== Alchemy Den Ranks ==\n" + rankData, {
-					code: "asciidoc"
-				})
+				message.channel.send(codeBlock("asciidoc", "== Alchemy Den Ranks ==\n" + rankData));
 				return
 		}
 		if (args[0] == "create") {
@@ -38,9 +38,7 @@ exports.run = async(client, message, args, level) => {
 
 		if (args[0] == "list") {
 			var rankData = fs.readFileSync("./commandStorage/ranks.txt", "utf8")
-				message.channel.send("== Alchemy Den Ranks ==\n" + rankData, {
-					code: "asciidoc"
-				})
+				message.channel.send(codeBlock("asciidoc", "== Alchemy Den Ranks ==\n" + rankData));
 				return
 		}
 

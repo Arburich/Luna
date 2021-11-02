@@ -1,4 +1,6 @@
 module.exports = (client, reaction, member) => {
+	console.log(reaction.emoji.id)
+	console.log(reaction.message.id)
 	if(reaction.emoji.id == "842084652218449940" && reaction.message.id === "899397177103765575") 
         {
 			var guild = client.guilds.cache.get("319655945695395851")

@@ -13,7 +13,7 @@ exports.run = async(client, message, args, level) => {
 
 	if (!res || !res.tracks.length)
 		return message.channel.send(`No results found ${message.author}... try again ? ❌`);
-
+	
 	const queue = await player.createQueue(message.guild, {
 			ytdlOptions: {
 				quality: "highest",
@@ -21,9 +21,9 @@ exports.run = async(client, message, args, level) => {
 				highWaterMark: 1 << 25,
 				dlChunkSize: 0,
 			},
+
 			metadata: message.channel
 		});
-
 	try {
 		//console.log(message.member.voice)
 		if (!queue.connection)

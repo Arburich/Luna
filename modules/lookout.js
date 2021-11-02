@@ -1,3 +1,4 @@
+const { codeBlock } = require("@discordjs/builders");
 module.exports = (client) => {
 
 	async function SENDIT(request){
@@ -38,11 +39,15 @@ module.exports = (client) => {
 		//console.log(tickHappenedWhen)
 		var hist = JSON.parse(fs.readFileSync(__dirname + "/../commandStorage/historical.json", "utf8"));
 		//console.log(systemData.length)
+		console.log("System Data start")
+		try{
 		for(var i = 1; i < systemData.length; i++){
 			//console.log("setting current system " + i)
 			current = systemData[i].body.docs[0]
 			var currentINF = 0
+			//console.log(`${i} out of ${systemData.length} systemData.length`)
 			for(var j = 0; j < current.factions.length; j++){
+				//console.log(`${j} out of ${current.factions.length} current.factions.length`)
 				if(current.factions[j].name_lower == "alchemy den"){
 					//console.log("found alchemy den")
 					currentINF = current.factions[j]["faction_details"]["faction_presence"]["influence"]
@@ -66,6 +71,7 @@ module.exports = (client) => {
 							var secondplace = []
 							//console.log("checking second place")
 							for (var u = 0; u < current.factions.length; u++){
+								//console.log(`${u} out of ${current.factions.length}  current.factions.length`)
 									secondplace.push(current.factions[u]["faction_details"]["faction_presence"]["influence"])
 								}
 							secondplace.sort(function(a, b){return b-a});			
@@ -82,20 +88,22 @@ module.exports = (client) => {
 							//console.log("checking active states")
 							var activeArray = current.factions[j]["faction_details"]["faction_presence"]["active_states"]
 							var active = ""
-							if (activeArray == 0) {
+							if (activeArray == 0 || activeArray == undefined) {
 								active += `None`
 							} else{
 								for(var k = 0; k < activeArray.length; k++){
+									//console.log(`${k} out of ${activeArray.length}  activeArray.length`)
 									active += activeArray[k].state + " "
 								}
 							}
 							//console.log("checking pending states")
 							var pendingArray = current.factions[j]["faction_details"]["faction_presence"]["pending_states"]
 							var pending = ""
-							if (pendingArray == 0) {
+							if (pendingArray == 0 || pendingArray == undefined) {
 								pending += `None`
 							} else{
 								for(var k = 0; k < pendingArray.length; k++){
+									//console.log(`${k} out of ${pendingArray.length}   pendingArray.length`)
 									pending += pendingArray[k].state + " "
 								}
 							}
@@ -105,7 +113,8 @@ module.exports = (client) => {
 							sendto += pending.trim().replace(" ", ", ")
 							//console.log("sending to channel")
 							var channel = LookoutData["systems"][current.factions[j]["faction_details"]["faction_presence"]["system_name_lower"]]
-							client.channels.cache.get(channel).send(sendto, {code: "diff"})
+							
+							client.channels.cache.get(channel).send(codeBlock("diff", sendto));
 						}
 					}
 					else{
@@ -115,6 +124,9 @@ module.exports = (client) => {
 				}
 			}
 			
+		}
+		}catch(e){
+			console.log(e)
 		}
 		fs.writeFileSync(__dirname + "/../commandStorage/historical.json", JSON.stringify(hist))
 		request.clean()
