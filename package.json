@@ -31,7 +31,7 @@
     "discord.js": "^13.2.0",
     "dotenv": "^10.0.0",
     "enmap": "^5.8.7",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "ffmpeg-static": "^4.4.0",
     "forever": "^3.0.4",
     "jquery": "^3.6.0",
