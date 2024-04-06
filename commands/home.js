@@ -10,7 +10,7 @@ exports.run = async(client, message, args, level) => {
 		},
 		"fields": [{
 				"name": "EDDB Links:",
-				"value": "System: https://eddb.io/system/268\nStation: https://eddb.io/station/1521"
+				"value": "System: https://inara.cz/elite/starsystem/441/\nStation: https://inara.cz/elite/station/1196/"
 			}, {
 				"name": "Nearest Material Traders:",
 				"value": "**Encoded**: *LFT 1103*, Kirk Ring, 6 Ls, 18.52 Ly\n**Manufactured**: *LP 620-3*, Jensen Enterprise,  14 Ls, 18.21 Ly\n**Raw**: *Chaac*, Lem Dock, 560 Ls, 28.39 Ly"
@@ -19,7 +19,7 @@ exports.run = async(client, message, args, level) => {
 				"value": "**Guardian**: *GQ Virginis*, Ray Enterprise, 433 Ls, 27.99 Ly\n**Human**: *Xevioso*,  Ciferri Gateway, 30 Ls, 14.73 Ly"
 			}, {
 				"name": "Nearest Interstellar Factors: ",
-				"value": "*Wolf 497*, Buffett Vista,  56 Ls, 16.94 Ly"
+				"value": "*Wolf 497*, Buffett Vista,  56 Ls, 16.94 Ly (AD present)\n*Rakapila*, Stone Enterprise, 39 Ls, 33.53 Ly"
 			}
 		]
 	};
