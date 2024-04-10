@@ -61,13 +61,16 @@ exports.run = async(client, message, args) => {
 	if (args.length > 2){
 		argu = argu.split("\n")
 		message.channel.send("Giving bits to " + argu.length + " people. Stand By. <:lunao7:728048963000729681>")
-		let usersList = message.mentions.users.array()
+		
+		let usersList = Array.from(message.mentions.users)
 		for(var j = 0; j < usersList.length; j++){
 		    if (argu.length != usersList.length){
-				message.channel.send("Don't mention multople people in the same message or make sure every line has an @mention.\nPlease make a new Line for every Name / Amount combo. \nExample:\n @Name 10\n@Name2 10")
+				message.channel.send("Don't mention multiple people in the same message or make sure every line has an @mention.\nPlease make a new Line for every Name / Amount combo. \nExample:\n @Name 10\n@Name2 10")
 				return
 			}
-			var member = message.guild.member(usersList[j])
+			//console.log(usersList[j][0])
+			var member = message.guild.members.cache.get(usersList[j][0])
+			//console.log(member)
 			var amount = argu[j].split(" ")[1]
 	
 			if (isNaN(parseInt(amount))){
@@ -148,7 +151,7 @@ exports.conf = {
 	enabled: true,
 	guildOnly: true,
 	aliases: ["r"],
-	permLevel: "Regular"
+	permLevel: "User"
 };
 
 exports.help = {

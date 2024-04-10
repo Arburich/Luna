@@ -19,7 +19,7 @@ exports.run = async(client, message, args, level) => { // All arguments behind t
 		return message.channel.send('I can\'t ban yourself friend.'); // Check if the user mention or the entered userID is the message author himsmelf
 	if (!banReason)
 		banReason = "user was banned"
-			if (!message.guild.member(user).bannable)
+			if (!message.guild.member.cache.get(user).bannable)
 				return message.reply('That person is my friend!'); // Check if the user is bannable with the bot's permissions
 
 			await message.guild.members.ban(user) // Bans the user

@@ -16,7 +16,7 @@ exports.conf = {
 	enabled: true,
 	guildOnly: true,
 	aliases: ["setpres"],
-	permLevel: "Moderator"
+	permLevel: "User"
 };
 
 exports.help = {

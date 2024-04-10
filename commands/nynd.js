@@ -1,11 +1,11 @@
 exports.run = async(client, message, args, level) => {
 
 	if (!args[0]) {
-		message.channel.send("What year? 3305 or 3306?")
+		message.channel.send("What year? 3305, 3306, 3307?")
 		return
 	}
 	if (args[0] == 3305) {
-		const embed = {
+		const embed1 = {
 			"title": "== New Year, New Discoveries 3305 ==",
 			"color": 5968035,
 			"image": {
@@ -21,12 +21,32 @@ exports.run = async(client, message, args, level) => {
 			]
 		};
 		message.channel.send({
-			embed
+			embeds: [embed1]
+		});
+	}
+	if (args[0] == 3307) {
+		const embed1 = {
+			"title": "== New Year, New Discoveries 3307 ==",
+			"color": 5968035,
+			"image": {
+				"url": "https://i.imgur.com/r0CQM6M.png"
+			},
+			"fields": [{
+					"name": "Stats",
+					"value": "https://www.edsm.net/en/expeditions/summary/id/128/name/New+Year%2C+New+Discoveries+3307"
+				}, {
+					"name": "The Alchemists that Made It",
+					"value": "Too many",
+				}
+			]
+		};
+		message.channel.send({
+			embeds: [embed1]
 		});
 	}
 
 	if (args[0] == 3306) {
-		const embed = {
+		const embed1 = {
 			"title": "== New Year, New Discoveries 3306 ==",
 			"color": 5968035,
 			"image": {
@@ -42,7 +62,7 @@ exports.run = async(client, message, args, level) => {
 			]
 		};
 		message.channel.send({
-			embed
+			embeds: [embed1]
 		});
 	}
 

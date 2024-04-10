@@ -75,9 +75,12 @@ exports.run = async(client, message, args, level) => {
 		}
 		var rankData = fs.readFileSync(__dirname + "/../commandStorage/ranks.txt", "utf8")
 		if (rankData.toLowerCase().includes(theRank.toLowerCase())) {
+			message.channel.send(theRank)
+			console.log(message.guild.roles.cache);
 			let role = message.guild.roles.cache.find(r => r.name.toLowerCase() === theRank.toLowerCase())
 				if (message.member.roles.cache.find(r => r.name.toLowerCase() === theRank.toLowerCase())) {
 					message.member.roles.remove(role);
+					
 					message.channel.send("You were removed from " + role.name)
 				} else {
 					message.member.roles.add(role)
