@@ -15,8 +15,8 @@ exports.run = async(client, message, args, level) => {
 		member.roles.add(role2).catch(console.error);
 	}
 
-	message.channel.send("Welcome to Alchemy Den " + member.toString() + "! <:lunao7:728048963000729681> \n\nYou are now an Alchemist! Head on over to <#466276477546266625> and say hello! \n\nMake sure to also check out the bottom of <#319655945695395851> for some info on this server. \n\n Glad to have you here!! <:NYND:539592347223064599>");
-	client.channels.cache.get('466276477546266625').send('Welcome our new fren ' + member.toString() + " everyone! <:lunahype:728048962367389728>")
+	message.channel.send("Welcome to Alchemy Den " + member.toString() + "! <:lunao7:728048963000729681> \n\nYou are now an Alchemist! Head on over to <#565240016486268943> and say hello! \n\nMake sure to also check out the bottom of <#319655945695395851> for some info on this server. \n\n Glad to have you here!! <:NYND:539592347223064599>");
+	client.channels.cache.get('565240016486268943').send('Welcome our new fren ' + member.toString() + " everyone! <:lunahype:728048962367389728>")
 };
 
 exports.conf = {
